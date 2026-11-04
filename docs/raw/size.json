@@ -1,15 +1,15 @@
 {
-  "at": "2026-11-03T16:53:07Z",
   "machine": "Apple M4 Pro (14 cores)",
   "records": [
     {
       "app": "fsr",
+      "at": "2026-11-04T13:59:41Z",
       "deploy": {
-        "binary_bytes": 22795568,
+        "binary_bytes": 23077376,
         "runtime": null,
         "runtime_bytes": null,
-        "stripped_binary_bytes": 17513320,
-        "tree_bytes": 26578505,
+        "stripped_binary_bytes": 17745608,
+        "tree_bytes": 26862965,
         "tree_files": 458
       },
       "pages": {
@@ -139,10 +139,12 @@
           "wasm": 0,
           "wasm_gz": 0
         }
-      }
+      },
+      "version": "snapfire_fsr_host 0.22.0 at 9b355b7a"
     },
     {
       "app": "nextjs",
+      "at": "2026-11-03T16:53:07Z",
       "deploy": {
         "binary_bytes": null,
         "runtime": "Node v23.9.0",
@@ -278,10 +280,12 @@
           "wasm": 0,
           "wasm_gz": 0
         }
-      }
+      },
+      "version": "next 16.4.4, react 19.3.1"
     },
     {
       "app": "sveltekit",
+      "at": "2026-11-03T16:53:07Z",
       "deploy": {
         "binary_bytes": null,
         "runtime": "Node v23.9.0",
@@ -417,10 +421,12 @@
           "wasm": 0,
           "wasm_gz": 0
         }
-      }
+      },
+      "version": "@sveltejs/kit 3.1.1, svelte 5.57.3"
     },
     {
       "app": "nuxt",
+      "at": "2026-11-03T16:53:07Z",
       "deploy": {
         "binary_bytes": null,
         "runtime": "Node v23.9.0",
@@ -556,10 +562,12 @@
           "wasm": 0,
           "wasm_gz": 0
         }
-      }
+      },
+      "version": "nuxt 4.6.4, vue 3.5.44"
     },
     {
       "app": "leptos",
+      "at": "2026-11-03T16:53:07Z",
       "deploy": {
         "binary_bytes": 13150864,
         "runtime": null,
@@ -695,10 +703,12 @@
           "wasm": 739222,
           "wasm_gz": 263314
         }
-      }
+      },
+      "version": "leptos 0.8.23"
     },
     {
       "app": "dioxus",
+      "at": "2026-11-03T16:53:07Z",
       "deploy": {
         "binary_bytes": 7634416,
         "runtime": null,
@@ -834,15 +844,8 @@
           "wasm": 1354302,
           "wasm_gz": 494755
         }
-      }
+      },
+      "version": "dioxus 0.7.10"
     }
-  ],
-  "versions": {
-    "dioxus": "dioxus 0.7.10",
-    "fsr": "snapfire_fsr_host 0.22.0 at 8b6b64eb+dirty",
-    "leptos": "leptos 0.8.23",
-    "nextjs": "next 16.4.4, react 19.3.1",
-    "nuxt": "nuxt 4.6.4, vue 3.5.44",
-    "sveltekit": "@sveltejs/kit 3.1.1, svelte 5.57.3"
-  }
+  ]
 }

@@ -4,19 +4,19 @@ The same online store built in SnapFire FSR, Next.js, SvelteKit, Nuxt, Leptos an
 
 ## Results
 
-Requests per second at 128 concurrent clients, measured 2026-11-03 and 2026-11-04 on an Apple M4 Pro (14 cores) in high power mode. Higher is better. The run is not finished yet: the third repetition is missing for SvelteKit, Nuxt, Leptos and Dioxus and part of it for Next.js, so their figures are medians of two repetitions.
+Requests per second at 128 concurrent clients, measured 2026-11-03 and 2026-11-04 on an Apple M4 Pro (14 cores) in high power mode. Higher is better. Each figure is the median of three repetitions.
 
 | Page | FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Home page | **171,576** | 8,430 | 31,835 | 29,408 | 166,700 | 36,085 |
-| Product list | **53,208** | 851 | 6,092 | 1,902 | 34,111 | 12,798 |
-| Product page | **121,024** | 1,481 | 13,245 | 3,686 | 99,822 | 31,471 |
-| Search | **102,656** | 1,412 | 10,664 | 3,170 | 79,384 | 26,772 |
-| JSON API | 164,459 | 6,807 | 24,934 | 39,248 | **171,524** | 170,700 |
-| 500-row table | 11,182 | 178 | 1,153 | 1,236 | **14,080** | 10,722 |
-| Prime sieve (heavy compute) | 870<br>native 72,513 | 1,031 | 2,719 | 1,710 | **74,425** | 30,810 |
-| Sales report (heavy compute) | 4,818<br>**native 98,020** | 1,448 | 9,750 | 3,551 | 91,292 | 32,740 |
-| Word count (heavy compute) | 1,258<br>native 5,077 | 437 | 587 | 550 | **5,811** | 5,208 |
+| Home page | **171,576** | 8,430 | 32,079 | 29,283 | 164,653 | 36,091 |
+| Product list | **53,208** | 851 | 6,167 | 1,929 | 35,044 | 13,049 |
+| Product page | **121,024** | 1,481 | 13,171 | 3,722 | 102,790 | 32,175 |
+| Search | **102,656** | 1,412 | 11,146 | 3,239 | 79,564 | 26,927 |
+| JSON API | 164,459 | 6,717 | 24,814 | 39,999 | 169,373 | **170,573** |
+| 500-row table | 11,182 | 186 | 1,157 | 1,233 | **14,137** | 10,686 |
+| Prime sieve (heavy compute) | 870<br>native 72,513 | 1,047 | 2,754 | 1,815 | **73,737** | 31,923 |
+| Sales report (heavy compute) | 4,818<br>**native 98,020** | 1,487 | 9,787 | 3,589 | 92,004 | 32,953 |
+| Word count (heavy compute) | 1,258<br>native 5,077 | 452 | 591 | 555 | **5,886** | 5,172 |
 
 On the compute pages FSR is measured twice. The first figure has the loader computing in TypeScript. The one marked native has the loader calling the same Rust that Leptos and Dioxus run, through `#[native]`. The view and the render are FSR's both times. Both figures are ranked.
 
@@ -24,11 +24,11 @@ On the compute pages FSR is measured twice. The first figure has the loader comp
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Cold build | 40.5 s | 2.8 s | **1.5 s** | 3.4 s | 48.5 s | 56.9 s |
 | Rebuild after one change | **0.7 s** | 1.4 s | 1.3 s | 2.6 s | 14.0 s | 13.2 s |
-| Total to deploy, runtime included | 25.3 MiB | 151.8 MiB | 108.8 MiB | 109.7 MiB | 13.3 MiB | **8.6 MiB** |
+| Total to deploy, runtime included | 25.6 MiB | 151.8 MiB | 108.8 MiB | 109.7 MiB | 13.3 MiB | **8.6 MiB** |
 | JavaScript per page, gzipped | 40.0 KiB | 135.0 KiB | 33.7 KiB | 69.3 KiB | **6.7 KiB** | 15.8 KiB |
 | WebAssembly per page, gzipped | - | - | - | - | **257.1 KiB** | 483.2 KiB |
-| Memory at start | 20.0 MB | 95.0 MB | 60.3 MB | 80.7 MB | **5.7 MB** | 10.2 MB |
-| Start to first response | 21 ms | 262 ms | 52 ms | 215 ms | 23 ms | **16 ms** |
+| Memory at start | 20.0 MB | 95.0 MB | 60.4 MB | 80.1 MB | **5.7 MB** | 10.2 MB |
+| Start to first response | **16 ms** | 322 ms | 54 ms | 212 ms | 30 ms | 24 ms |
 
 The total to deploy is the deploy tree plus the runtime installed beside it: Node, 107.3 MiB, for Next.js, SvelteKit and Nuxt. Bytes per page are for the counter page.
 
