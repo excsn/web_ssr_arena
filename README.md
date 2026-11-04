@@ -8,15 +8,15 @@ Requests per second at 128 concurrent clients, measured on an Apple M4 Pro (14 c
 
 | Page | FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Home page | **171,576** | 8,430 | 32,079 | 29,283 | **164,653** | 36,091 |
-| Product list | **53,208** | 851 | 6,167 | 1,929 | 35,044 | 13,049 |
-| Product page | **121,024** | 1,481 | 13,171 | 3,722 | 102,790 | 32,175 |
-| Search | **102,656** | 1,412 | 11,146 | 3,239 | 79,564 | 26,927 |
+| Home page | **171,981** | 8,430 | 32,079 | 29,283 | **164,653** | 36,091 |
+| Product list | **57,443** | 851 | 6,167 | 1,929 | 35,044 | 13,049 |
+| Product page | **119,511** | 1,481 | 13,171 | 3,722 | 102,790 | 32,175 |
+| Search | **101,077** | 1,412 | 11,146 | 3,239 | 79,564 | 26,927 |
 | JSON API | **169,760** | 6,717 | 24,814 | 39,999 | **169,373** | **170,573** |
-| 500-row table | 11,182 | 186 | 1,157 | 1,233 | **14,137** | 10,686 |
-| Prime sieve (heavy compute) | 870<br>**native 72,513** | 1,047 | 2,754 | 1,815 | **73,737** | 31,923 |
-| Sales report (heavy compute) | 4,818<br>**native 98,020** | 1,487 | 9,787 | 3,589 | 92,004 | 32,953 |
-| Word count (heavy compute) | 1,258<br>native 5,077 | 452 | 591 | 555 | **5,886** | 5,172 |
+| 500-row table | **14,345** | 186 | 1,157 | 1,233 | **14,137** | 10,686 |
+| Prime sieve (heavy compute) | 842<br>**native 81,994** | 1,047 | 2,754 | 1,815 | 73,737 | 31,923 |
+| Sales report (heavy compute) | 4,792<br>**native 106,695** | 1,487 | 9,787 | 3,589 | 92,004 | 32,953 |
+| Word count (heavy compute) | 1,263<br>**native 5,632** | 452 | 591 | 555 | **5,886** | 5,172 |
 
 Bold marks the best figure in a row and every figure within 5% of it.
 
@@ -24,17 +24,23 @@ On the compute pages FSR is measured twice. The first figure has the loader comp
 
 | Measure | FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Cold build | 40.5 s | 2.8 s | **1.5 s** | 3.4 s | 48.5 s | 56.9 s |
+| Cold build | 44.6 s | 2.8 s | **1.5 s** | 3.4 s | 48.5 s | 56.9 s |
 | Rebuild after one change | **0.7 s** | 1.4 s | 1.3 s | 2.6 s | 14.0 s | 13.2 s |
 | Total to deploy, runtime included | 25.6 MiB | 151.8 MiB | 108.8 MiB | 109.7 MiB | 13.3 MiB | **8.6 MiB** |
 | JavaScript per page, gzipped | 40.0 KiB | 135.0 KiB | 33.7 KiB | 69.3 KiB | **6.7 KiB** | 15.8 KiB |
 | WebAssembly per page, gzipped | - | - | - | - | **257.1 KiB** | 483.2 KiB |
-| Memory at start | 20.0 MB | 95.0 MB | 60.4 MB | 80.1 MB | **5.7 MB** | 10.2 MB |
-| Start to first response | **16 ms** | 322 ms | 54 ms | 212 ms | 30 ms | 24 ms |
+| Memory at start | 19.9 MB | 95.0 MB | 60.4 MB | 80.1 MB | **5.7 MB** | 10.2 MB |
+| Start to first response | **14 ms** | 322 ms | 54 ms | 212 ms | 30 ms | 24 ms |
 
 The total to deploy is the deploy tree plus the runtime installed beside it: Node, 107.3 MiB, for Next.js, SvelteKit and Nuxt. Bytes per page are for the counter page.
 
 Every number, every concurrency level and the method are in [docs/README.md](docs/README.md).
+
+## Benchmarks
+
+Eleven pages are loaded at 1 to 256 concurrent clients in every app: two built once, four rendered per request from the catalog, a JSON API, three compute-heavy pages and a 500-row table. Build time, deploy size, startup, memory and the bytes each page loads are measured beside them. Every page is checked to answer the same in every app before any load runs. 
+
+[BENCHMARK_SPECS.md](BENCHMARK_SPECS.md) has each benchmark, the pages, the machine it needs, the load and how each measure is taken.
 
 ## What's in here
 
@@ -50,6 +56,7 @@ Every number, every concurrency level and the method are in [docs/README.md](doc
 | `src/` | The benchmark harness |
 | `load/` | The HTTP load client the harness drives, with `loadgen` and `matrix` for loading one server by hand |
 | `docs/` | The results |
+| `BENCHMARK_SPECS.md` | What is measured and how |
 | `scripts/clean.sh` | Removes everything the arena writes |
 
 ## Setup
@@ -122,51 +129,6 @@ The default run is 6 apps × 11 pages × 6 levels × 3 repetitions at 10 s, plus
 ```sh
 ./target/release/web_ssr_arena import-log runs/run-2026-11-03.log
 ```
-
-### Before a run
-
-Nothing else should be running. The load client shares the machine with the server and takes four threads.
-
-## The Pages
-
-| Page | Path | Rendered | What it holds |
-| :--- | :--- | :--- | :--- |
-| `home` | `/` | at build | A hero and three features, no data. |
-| `counter` | `/counter` | at build | One component that hydrates in the browser. |
-| `catalog` | `/products?sort=price` | per request | All 48 products, sorted by the query. |
-| `product` | `/products/cedar-lantern` | per request | One product by its slug, with four related products. |
-| `search` | `/search?q=pack` | per request | The 12 products matching the query. |
-| `missing` | `/products/nope` | per request | A 404. |
-| `api` | `/api/products` | per request | The catalog as JSON. |
-| `primes` | `/compute/primes?n=50000` | per request | A sieve of Eratosthenes up to `n`: tight numeric loops over an array. |
-| `report` | `/compute/report?orders=5000` | per request | Generated orders aggregated per product, sorted by revenue with a comparator and formatted. |
-| `words` | `/compute/words?passes=20` | per request | Word frequencies over a built-up text: splitting, lowercasing and counting in an object. |
-| `table` | `/table?rows=500` | per request | 500 rows from simple data, so the cost is the render. |
-
-Every page is fetched and checked for its status, its content type, its text and its count of product cards before any load runs against it. The compute pages and the table each write a digest of what they computed. A run refuses to start when two apps write different digests:
-
-```sh
-./target/release/web_ssr_arena check
-# fsr        every page answers as it must
-#            primes   primes 50000 5133 121013308 49919,49921,...
-```
-
-Their code is `shared/compute.ts` and the views under `shared/views/`, copied into every app like the catalog. FSR and Next.js share the TSX views; SvelteKit takes the Svelte ones in `shared/views/svelte/`, Nuxt the Vue ones in `shared/views/vue/`, Leptos the components in `shared/views/leptos/` and Dioxus those in `shared/views/dioxus/`. Leptos and Dioxus take the catalog and compute code as `shared/catalog.rs`, `shared/compute.rs` and `shared/format.rs`, the same code in Rust. `check` fails when a copy differs from `shared/`.
-
-FSR is measured on `primes`, `report` and `words` a second time, under `/compute/native/`, with the loader calling `shared/compute.rs` through `#[native]` (`apps/fsr/src/native.rs`). The view and the render stay FSR's. These cells are recorded as `primes.native`, `report.native` and `words.native`. `report` writes each figure under FSR's own in the same table cell. `check` requires each native page to write the same digest as its TypeScript form.
-
-## Measures
-
-| Command | Measure | How |
-| :--- | :--- | :--- |
-| `build` | Cold build | From empty output directories, dependencies downloaded: a fresh `CARGO_TARGET_DIR` and no rustc wrapper for FSR, Leptos and Dioxus, a fresh `distDir` for Next.js, fresh output, build and Vite cache directories for SvelteKit and Nuxt. FSR's time includes `fsr build app` and its `prerender` step. |
-| `build` | Warm build | One page touched, everything else reused. |
-| `size` | Deploy tree | For FSR, `fsr bundle` plus the binary and `config/`. For Next.js, `.next/standalone` with `.next/static` copied in. For SvelteKit, `build/` and `package.json`. For Nuxt, `.output/`. For Leptos, its `site/` and the binary. For Dioxus, the `web/` directory `dx` writes. Node is listed apart as the runtime the last three need. |
-| `size` | Bytes per page | The document, stylesheets, preloaded WebAssembly and scripts, following module imports, raw and gzipped. Modules reached only by a dynamic `import()` are counted apart. |
-| `run` | Requests per second and latency | One HTTP/1.1 connection per client, the next request sent when the last body is read, from the client in `load/`. |
-| `run` | CPU and memory | The server's CPU over each cell from `ps`, its resident set after each cell and its peak from `wait4` when it stops. Spawn to first 200 at each start. |
-
-FSR, Leptos and Dioxus serve on every core. Next.js, SvelteKit and Nuxt each serve from one Node process.
 
 ## Results files
 
