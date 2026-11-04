@@ -495,6 +495,69 @@ fn partial(perf: &Value) -> Option<String> {
   (records.len() < wanted_all).then(|| format!("Partial: {} of {wanted_all} cells measured, so a figure may be the median of fewer than {reps} repetitions. {}.", records.len(), missing.join(", ")))
 }
 
+/// Each app's versions with what each measured, from `[perf, build, size]`: the pages of the load cells, the build and the sizes. A record without a version of its own has the one its file recorded.
+fn measured_versions(sources: &[Option<&Value>]) -> BTreeMap<String, String> {
+  let mut seen: BTreeMap<String, Vec<(String, Vec<String>)>> = BTreeMap::new();
+  for (at, source) in sources.iter().enumerate() {
+    let Some(source) = source else { continue };
+    for record in source["records"].as_array().into_iter().flatten() {
+      let app = record["app"].as_str().unwrap_or("?").to_owned();
+      let version = record["version"].as_str().or_else(|| source["versions"][&app].as_str()).unwrap_or("?").to_owned();
+      let what = match at {
+        0 => record["page"].as_str().unwrap_or("?").to_owned(),
+        1 => "the build".to_owned(),
+        _ => "the sizes".to_owned(),
+      };
+      let versions = seen.entry(app).or_default();
+      let at = match versions.iter().position(|(v, _)| *v == version) {
+        Some(at) => at,
+        None => {
+          versions.push((version, Vec::new()));
+          versions.len() - 1
+        }
+      };
+      if !versions[at].1.contains(&what) {
+        versions[at].1.push(what);
+      }
+    }
+  }
+  seen
+    .into_iter()
+    .map(|(app, versions)| {
+      let line = match versions.as_slice() {
+        [(version, _)] => version.clone(),
+        _ => versions.iter().map(|(version, what)| format!("{version} for {}", and_list(what))).collect::<Vec<_>>().join("; "),
+      };
+      (app, line)
+    })
+    .collect()
+}
+
+fn and_list(items: &[String]) -> String {
+  match items {
+    [] => String::new(),
+    [one] => one.clone(),
+    [rest @ .., last] => format!("{} and {last}", rest.join(", ")),
+  }
+}
+
+/// When the sizes were measured, with the apps each time covers when they were not all measured at once.
+fn size_times(size: &Value) -> String {
+  let mut times: Vec<(String, Vec<String>)> = Vec::new();
+  for record in size["records"].as_array().into_iter().flatten() {
+    let at = record["at"].as_str().or_else(|| size["at"].as_str()).unwrap_or("?").to_owned();
+    let app = app_name(record["app"].as_str().unwrap_or("?")).to_owned();
+    match times.iter_mut().find(|(t, _)| *t == at) {
+      Some((_, apps)) => apps.push(app),
+      None => times.push((at, vec![app])),
+    }
+  }
+  match times.as_slice() {
+    [(at, _)] => at.clone(),
+    _ => times.iter().map(|(at, apps)| format!("{at} for {}", and_list(apps))).collect::<Vec<_>>().join("; "),
+  }
+}
+
 fn state_line(label: &str, state: &Value) -> String {
   format!("{label} {} in {} power mode at load {}", state["at"].as_str().unwrap_or("?"), state["power_mode"].as_str().unwrap_or("?"), state["load"])
 }
@@ -521,14 +584,7 @@ pub fn write(raw: &Path, docs: &Path) -> Result<Vec<PathBuf>, String> {
     groups.push(size_group(size));
   }
 
-  let mut versions: BTreeMap<String, String> = BTreeMap::new();
-  for source in [&perf, &build, &size].into_iter().flatten() {
-    if let Some(map) = source["versions"].as_object() {
-      for (k, v) in map {
-        versions.entry(k.clone()).or_insert_with(|| v.as_str().unwrap_or("?").to_owned());
-      }
-    }
-  }
+  let versions = measured_versions(&[perf.as_ref(), build.as_ref(), size.as_ref()]);
   let machine = [&perf, &build, &size].into_iter().flatten().find_map(|s| s["machine"].as_str().map(str::to_owned)).unwrap_or_default();
 
   let mut md = String::from("# Arena results\n\n");
@@ -548,7 +604,7 @@ pub fn write(raw: &Path, docs: &Path) -> Result<Vec<PathBuf>, String> {
     let _ = writeln!(md, "Build: {}. {}.\n", state_line("Started", &build["start"]), state_line("ended", &build["end"]));
   }
   if let Some(size) = &size {
-    let _ = writeln!(md, "Size: measured {}.\n", size["at"].as_str().unwrap_or("?"));
+    let _ = writeln!(md, "Size: measured {}.\n", size_times(size));
   }
   for group in &groups {
     let _ = writeln!(md, "## {}\n\n{}\n", group.title, group.blurb);
@@ -614,6 +670,21 @@ pub fn write(raw: &Path, docs: &Path) -> Result<Vec<PathBuf>, String> {
 #[cfg(test)]
 mod tests {
   use super::*;
+
+  #[test]
+  fn each_version_is_named_with_what_it_measured() {
+    let perf = json!({ "versions": { "fsr": "B" }, "records": [
+      { "app": "fsr", "page": "home", "version": "A" },
+      { "app": "fsr", "page": "api", "version": "B" },
+      { "app": "fsr", "page": "counter" },
+      { "app": "fsr", "page": "home", "version": "A" },
+      { "app": "leptos", "page": "home", "version": "L" },
+    ]});
+    let build = json!({ "versions": { "fsr": "A", "leptos": "L" }, "records": [{ "app": "fsr" }, { "app": "leptos" }] });
+    let lines = measured_versions(&[Some(&perf), Some(&build), None]);
+    assert_eq!(lines["fsr"], "A for home and the build; B for api and counter");
+    assert_eq!(lines["leptos"], "L");
+  }
 
   #[test]
   fn a_native_figure_is_written_under_the_cell_it_belongs_to() {

@@ -185,11 +185,36 @@ async fn size(a: &Args) -> Result<(), String> {
     server.stop();
     let pages = pages?;
     println!("{:<10} deploy tree {} bytes in {} files", app.id, deploy["tree_bytes"], deploy["tree_files"]);
-    records.push(json!({ "app": app.id, "deploy": deploy, "pages": pages }));
+    records.push(json!({ "app": app.id, "deploy": deploy, "pages": pages, "at": machine::now_utc(), "version": app.version() }));
   }
-  let path = write_raw("size", &json!({ "machine": a.machine, "at": machine::now_utc(), "versions": versions(&a.apps), "records": records }))?;
+  let earlier = std::fs::read_to_string(raw_dir().join("size.json")).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok());
+  let records = merged_sizes(earlier.as_ref(), records);
+  let path = write_raw("size", &json!({ "machine": a.machine, "records": records }))?;
   println!("wrote {}", path.display());
   Ok(())
+}
+
+/// The size records of `old` with each app in `measured` replaced where it stood, each kept record given the version and time its file recorded.
+fn merged_sizes(old: Option<&Value>, measured: Vec<Value>) -> Vec<Value> {
+  let mut merged: Vec<Value> = Vec::new();
+  for record in old.and_then(|o| o["records"].as_array()).into_iter().flatten() {
+    let mut record = record.clone();
+    let app = record["app"].as_str().unwrap_or_default().to_owned();
+    if record.get("version").is_none() {
+      record["version"] = old.map_or(Value::Null, |o| o["versions"][&app].clone());
+    }
+    if record.get("at").is_none() && old.is_some_and(|o| o.get("at").is_some()) {
+      record["at"] = old.map_or(Value::Null, |o| o["at"].clone());
+    }
+    merged.push(record);
+  }
+  for record in measured {
+    match merged.iter_mut().find(|r| r["app"] == record["app"]) {
+      Some(slot) => *slot = record,
+      None => merged.push(record),
+    }
+  }
+  merged
 }
 
 /// Each cell, server and sitting of a run as it lands, one JSON object per line, so a stopped run can be resumed.
@@ -211,11 +236,18 @@ fn read_journal(path: &std::path::Path) -> Result<Journal, String> {
   for (n, line) in text.lines().enumerate().filter(|(_, l)| !l.trim().is_empty()) {
     let entry: Value = serde_json::from_str(line).map_err(|e| format!("{}:{}: {e}", path.display(), n + 1))?;
     if let Some(record) = entry.get("record") {
-      journal.records.push(record.clone());
+      let mut record = record.clone();
+      if record.get("version").is_none() {
+        let app = record["app"].as_str().unwrap_or_default().to_owned();
+        if let Some(version) = journal.sittings.last().and_then(|s| s["versions"].get(&app)) {
+          record["version"] = version.clone();
+        }
+      }
+      journal.records.push(record);
     } else if let Some(server) = entry.get("server") {
       journal.servers.push(server.clone());
     } else if let Some(start) = entry.get("start") {
-      journal.sittings.push(json!({ "start": start, "end": Value::Null }));
+      journal.sittings.push(json!({ "start": start, "end": Value::Null, "versions": entry.get("versions").cloned().unwrap_or(Value::Null) }));
     } else if let Some(end) = entry.get("end") {
       if let Some(last) = journal.sittings.last_mut() {
         last["end"] = end.clone();
@@ -294,36 +326,43 @@ async fn run(a: &Args) -> Result<(), String> {
   let done: std::collections::BTreeSet<perf::Cell> = earlier.records.iter().filter_map(perf::cell_of).collect();
   let left = plan.cells() - done.iter().filter(|(app, page, c, rep)| a.apps.iter().any(|x| x.id == app) && a.pages.iter().any(|p| p.variants(true).iter().any(|(id, _)| id == page)) && a.levels.contains(c) && *rep < plan.reps).count();
   println!("{} cells, {} measured already, {left} to measure, about {} s of load", plan.cells(), plan.cells() - left, plan.estimate_secs() * left as u64 / plan.cells().max(1) as u64);
-  let mut journal = std::fs::File::options().create(true).append(true).open(&path).map_err(|e| format!("{}: {e}", path.display()))?;
-  let start = machine::state();
-  say_state("start", &start);
-  append(&mut journal, json!({ "start": start }));
-  let log = runs_dir().join("run-servers.log");
-  let server_journal = std::cell::RefCell::new(journal.try_clone().map_err(|e| e.to_string())?);
-  let (records, servers) = perf::run(&plan, &log, &done, |r| {
-    append(&mut journal, json!({ "record": r }));
-    println!(
-      "{:<10} {:<8} c={:<4} rep {} {:>10.0} req/s  p50 {:>7.2} ms  p99 {:>7.2} ms  cpu {:>5.0}%  rss {:>6.1} MB",
-      r["app"].as_str().unwrap_or("?"),
-      r["page"].as_str().unwrap_or("?"),
-      r["c"],
-      r["rep"],
-      r["rps"].as_f64().unwrap_or(0.0),
-      r["p50_ms"].as_f64().unwrap_or(0.0),
-      r["p99_ms"].as_f64().unwrap_or(0.0),
-      r["cpu_pct"].as_f64().unwrap_or(0.0),
-      r["rss_mb"].as_f64().unwrap_or(0.0),
-    )
-  }, |s| append(&mut server_journal.borrow_mut(), json!({ "server": s })))
-  .await?;
-  let end = machine::state();
-  say_state("end", &end);
-  append(&mut server_journal.borrow_mut(), json!({ "end": end }));
-  let mut sittings = earlier.sittings;
-  sittings.push(json!({ "start": start, "end": end }));
-  let start = sittings[0]["start"].clone();
-  let records: Vec<Value> = earlier.records.into_iter().chain(records).collect();
-  let servers: Vec<Value> = earlier.servers.into_iter().chain(servers).collect();
+  let now = versions(&a.apps);
+  let (mut records, mut servers, mut sittings) = (earlier.records, earlier.servers, earlier.sittings);
+  if left > 0 {
+    let mut journal = std::fs::File::options().create(true).append(true).open(&path).map_err(|e| format!("{}: {e}", path.display()))?;
+    let start = machine::state();
+    say_state("start", &start);
+    append(&mut journal, json!({ "start": start, "versions": now }));
+    let log = runs_dir().join("run-servers.log");
+    let server_journal = std::cell::RefCell::new(journal.try_clone().map_err(|e| e.to_string())?);
+    let (measured, started) = perf::run(&plan, &log, &done, |r| {
+      append(&mut journal, json!({ "record": r }));
+      println!(
+        "{:<10} {:<8} c={:<4} rep {} {:>10.0} req/s  p50 {:>7.2} ms  p99 {:>7.2} ms  cpu {:>5.0}%  rss {:>6.1} MB",
+        r["app"].as_str().unwrap_or("?"),
+        r["page"].as_str().unwrap_or("?"),
+        r["c"],
+        r["rep"],
+        r["rps"].as_f64().unwrap_or(0.0),
+        r["p50_ms"].as_f64().unwrap_or(0.0),
+        r["p99_ms"].as_f64().unwrap_or(0.0),
+        r["cpu_pct"].as_f64().unwrap_or(0.0),
+        r["rss_mb"].as_f64().unwrap_or(0.0),
+      )
+    }, |s| append(&mut server_journal.borrow_mut(), json!({ "server": s })))
+    .await?;
+    let end = machine::state();
+    say_state("end", &end);
+    append(&mut server_journal.borrow_mut(), json!({ "end": end }));
+    sittings.push(json!({ "start": start, "end": end, "versions": now }));
+    records.extend(measured.into_iter().map(|mut r| {
+      r["version"] = now[r["app"].as_str().unwrap_or_default()].clone();
+      r
+    }));
+    servers.extend(started);
+  }
+  let start = sittings.first().map(|s| s["start"].clone()).unwrap_or(Value::Null);
+  let end = sittings.last().map(|s| s["end"].clone()).unwrap_or(Value::Null);
   let path = write_raw(
     "perf",
     &json!({
@@ -331,7 +370,6 @@ async fn run(a: &Args) -> Result<(), String> {
       "start": start,
       "end": end,
       "sittings": sittings,
-      "versions": versions(&a.apps),
       "secs": a.secs,
       "warmup_secs": a.warmup,
       "levels": a.levels,
@@ -398,7 +436,32 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
-  use super::{parse_cell, parse_state};
+  use super::{merged_sizes, parse_cell, parse_state, read_journal};
+  use serde_json::json;
+
+  #[test]
+  fn a_record_takes_the_versions_of_the_sitting_that_measured_it() {
+    let path = std::env::temp_dir().join(format!("arena-journal-{}.jsonl", std::process::id()));
+    let lines = [
+      r#"{"start":{"at":"t0"},"versions":{"fsr":"A"}}"#,
+      r#"{"record":{"app":"fsr","page":"home"}}"#,
+      r#"{"start":{"at":"t1"},"versions":{"fsr":"B"}}"#,
+      r#"{"record":{"app":"fsr","page":"api"}}"#,
+    ];
+    std::fs::write(&path, lines.join("\n")).unwrap();
+    let journal = read_journal(&path).unwrap();
+    std::fs::remove_file(&path).unwrap();
+    let versions: Vec<_> = journal.records.iter().map(|r| r["version"].as_str()).collect();
+    assert_eq!(versions, [Some("A"), Some("B")]);
+    assert_eq!(journal.sittings[1]["versions"]["fsr"], "B");
+  }
+
+  #[test]
+  fn sizes_of_one_app_replace_its_records_and_keep_the_others() {
+    let old = json!({ "versions": { "fsr": "A", "leptos": "L" }, "records": [{ "app": "fsr", "deploy": 1 }, { "app": "leptos", "deploy": 2 }] });
+    let merged = merged_sizes(Some(&old), vec![json!({ "app": "fsr", "deploy": 3, "version": "B" })]);
+    assert_eq!(merged, vec![json!({ "app": "fsr", "deploy": 3, "version": "B" }), json!({ "app": "leptos", "deploy": 2, "version": "L" })]);
+  }
 
   #[test]
   fn a_printed_cell_and_start_line_read_back() {

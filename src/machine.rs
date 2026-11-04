@@ -34,12 +34,39 @@ pub fn load_average() -> Option<f64> {
   output("sysctl", &["-n", "vm.loadavg"])?.split_whitespace().find_map(|field| field.parse().ok())
 }
 
-/// The commit `dir` is at, with `+dirty` when its tree has changes.
+/// The commit `dir` is at. A tree with changes adds `+dirty.` and a hash of the changes and of every untracked file, so two different trees on one commit read apart.
 pub fn commit(dir: &Path) -> Option<String> {
-  let at = |args: &[&str]| Command::new("git").arg("-C").arg(dir).args(args).output().ok().filter(|o| o.status.success()).map(|o| String::from_utf8_lossy(&o.stdout).trim().to_owned());
-  let head = at(&["rev-parse", "--short=8", "HEAD"])?;
-  let dirty = at(&["status", "--porcelain", "--", "."]).is_some_and(|s| !s.is_empty());
-  Some(if dirty { format!("{head}+dirty") } else { head })
+  let at = |args: &[&str]| Command::new("git").arg("-C").arg(dir).args(args).output().ok().filter(|o| o.status.success()).map(|o| o.stdout);
+  let head = String::from_utf8_lossy(&at(&["rev-parse", "--short=8", "HEAD"])?).trim().to_owned();
+  if at(&["status", "--porcelain", "--", "."]).is_none_or(|s| s.is_empty()) {
+    return Some(head);
+  }
+  let mut hash = Fnv::default();
+  hash.write(&at(&["diff", "HEAD", "--binary", "--", "."])?);
+  let untracked = at(&["ls-files", "--others", "--exclude-standard", "-z", "--", "."])?;
+  for name in untracked.split(|b| *b == 0).filter(|n| !n.is_empty()) {
+    hash.write(name);
+    hash.write(&std::fs::read(dir.join(String::from_utf8_lossy(name).as_ref())).unwrap_or_default());
+  }
+  Some(format!("{head}+dirty.{:08x}", hash.0 >> 32))
+}
+
+/// FNV-1a, 64 bits: the same hash on every build, which `DefaultHasher` does not promise.
+struct Fnv(u64);
+
+impl Default for Fnv {
+  fn default() -> Self {
+    Self(0xcbf2_9ce4_8422_2325)
+  }
+}
+
+impl Fnv {
+  fn write(&mut self, bytes: &[u8]) {
+    for b in bytes {
+      self.0 = (self.0 ^ u64::from(*b)).wrapping_mul(0x0100_0000_01b3);
+    }
+    self.0 = (self.0 ^ 0xff).wrapping_mul(0x0100_0000_01b3);
+  }
 }
 
 pub fn output(program: &str, args: &[&str]) -> Option<String> {
@@ -71,6 +98,28 @@ fn civil_from_days(days: i64) -> (i64, u32, u32) {
 #[cfg(test)]
 mod tests {
   use super::*;
+
+  #[test]
+  fn two_different_uncommitted_trees_have_different_labels() {
+    let dir = std::env::temp_dir().join(format!("arena-commit-{}", std::process::id()));
+    std::fs::create_dir_all(&dir).unwrap();
+    let git = |args: &[&str]| assert!(Command::new("git").arg("-C").arg(&dir).args(["-c", "user.name=t", "-c", "user.email=t@t"]).args(args).output().unwrap().status.success());
+    git(&["init", "-q"]);
+    std::fs::write(dir.join("a"), "1").unwrap();
+    git(&["add", "a"]);
+    git(&["commit", "-q", "-m", "a"]);
+    let clean = commit(&dir).unwrap();
+    std::fs::write(dir.join("a"), "2").unwrap();
+    let edited = commit(&dir).unwrap();
+    std::fs::write(dir.join("a"), "3").unwrap();
+    let edited_again = commit(&dir).unwrap();
+    std::fs::write(dir.join("b"), "new").unwrap();
+    let with_new_file = commit(&dir).unwrap();
+    std::fs::remove_dir_all(&dir).unwrap();
+    assert!(edited.starts_with(&format!("{clean}+dirty.")), "{edited}");
+    assert_ne!(edited, edited_again);
+    assert_ne!(edited_again, with_new_file);
+  }
 
   #[test]
   fn civil_dates() {
