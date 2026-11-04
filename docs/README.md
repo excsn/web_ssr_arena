@@ -2,18 +2,18 @@
 
 The same storefront written in SnapFire FSR, Next.js, SvelteKit, Nuxt, Leptos and Dioxus, built for production and served on one machine: build time, deploy size, bytes per page and requests per second.
 
-Higher is better for requests per second. Lower is better for latency, memory, build time and size.
+Higher is better for requests per second. Lower is better for latency, memory, build time and size. Bold marks the best figure in a row and every figure within 5% of it.
 
 Machine: Apple M4 Pro (14 cores).
 
 - Dioxus: dioxus 0.7.10
-- SnapFire FSR: snapfire_fsr_host 0.22.0 at 8b6b64eb+dirty for home, counter, catalog, product, search, missing, primes, report, words, table, primes.native, report.native, words.native and the build; snapfire_fsr_host 0.22.0 at da3fe771 for api; snapfire_fsr_host 0.22.0 at 9b355b7a for the sizes
+- SnapFire FSR: snapfire_fsr_host 0.22.0 at 8b6b64eb+dirty for home, counter, catalog, product, search, missing, primes, report, words, table, primes.native, report.native, words.native and the build; snapfire_fsr_host 0.22.0 at 9b355b7a for api and the sizes
 - Leptos: leptos 0.8.23
 - Next.js: next 16.4.4, react 19.3.1
 - Nuxt: nuxt 4.6.4, vue 3.5.44
 - SvelteKit: @sveltejs/kit 3.1.1, svelte 5.57.3
 
-Load: 10 s cells after 3 s of warm-up per page, 3 repetitions, 4 client threads. Started 2026-11-03T16:53:25Z in high power power mode at load 6.23. ended 2026-11-04T11:29:29Z in high power power mode at load 18.51.
+Load: 10 s cells after 3 s of warm-up per page, 4 client threads. Started 2026-11-03T16:53:25Z in high power power mode at load 6.23. ended 2026-11-04T14:17:03Z in high power power mode at load 17.87.
 
 Build: Started 2026-11-03T16:47:59Z in high power power mode at load 20.43. ended 2026-11-03T16:52:52Z in high power power mode at load 9.25.
 
@@ -31,8 +31,8 @@ Responses read in full per second at each number of concurrent clients.
 | 8 | **143,788** | 8,741 | 26,369 | 29,170 | 99,845 | 34,585 |
 | 32 | **178,348** | 8,541 | 28,770 | 30,133 | 155,975 | 36,077 |
 | 64 | **178,409** | 8,557 | 32,114 | 30,201 | 162,622 | 35,995 |
-| 128 | **171,576** | 8,430 | 32,079 | 29,283 | 164,653 | 36,091 |
-| 256 | **173,318** | 8,404 | 29,435 | 28,854 | 169,079 | 36,246 |
+| 128 | **171,576** | 8,430 | 32,079 | 29,283 | **164,653** | 36,091 |
+| 256 | **173,318** | 8,404 | 29,435 | 28,854 | **169,079** | 36,246 |
 
 The landing page: a hero and three features, no data.
 
@@ -44,8 +44,8 @@ The landing page: a hero and three features, no data.
 | 8 | **141,952** | 8,623 | 30,502 | 28,784 | 102,435 | 34,746 |
 | 32 | **176,858** | 8,644 | 31,196 | 29,812 | 157,534 | 36,088 |
 | 64 | **177,289** | 8,632 | 31,756 | 29,670 | 163,478 | 36,238 |
-| 128 | **175,575** | 8,547 | 32,016 | 29,000 | 167,743 | 36,344 |
-| 256 | **173,267** | 8,451 | 29,176 | 28,392 | 168,051 | 36,604 |
+| 128 | **175,575** | 8,547 | 32,016 | 29,000 | **167,743** | 36,344 |
+| 256 | **173,267** | 8,451 | 29,176 | 28,392 | **168,051** | 36,604 |
 
 A fixed page holding one component that hydrates in the browser.
 
@@ -105,12 +105,12 @@ A slug with no product, answered 404.
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 22,639 | 6,410 | 17,402 | 22,715 | **30,810** | 18,327 |
-| 8 | 105,455 | 6,788 | 25,451 | 40,578 | **127,998** | 79,967 |
-| 32 | 161,956 | 6,712 | 25,338 | 42,368 | **172,697** | 149,825 |
-| 64 | 164,536 | 6,710 | 25,349 | 41,314 | **171,057** | 163,376 |
-| 128 | 164,459 | 6,717 | 24,814 | 39,999 | 169,373 | **170,573** |
-| 256 | 166,249 | 6,710 | 23,755 | 39,614 | 168,457 | **171,040** |
+| 1 | 22,124 | 6,410 | 17,402 | 22,715 | **30,810** | 18,327 |
+| 8 | 103,758 | 6,788 | 25,451 | 40,578 | **127,998** | 79,967 |
+| 32 | 162,180 | 6,712 | 25,338 | 42,368 | **172,697** | 149,825 |
+| 64 | **166,680** | 6,710 | 25,349 | 41,314 | **171,057** | **163,376** |
+| 128 | **169,760** | 6,717 | 24,814 | 39,999 | **169,373** | **170,573** |
+| 256 | **172,217** | 6,710 | 23,755 | 39,614 | **168,457** | **171,040** |
 
 The catalog as JSON.
 
@@ -118,12 +118,12 @@ The catalog as JSON.
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 91<br>native 7,899 | 963 | 2,435 | 1,498 | **8,218** | 6,203 |
-| 8 | 608<br>**native 44,162** | 1,061 | 2,768 | 1,835 | 42,043 | 29,294 |
-| 32 | 834<br>native 72,599 | 1,062 | 2,564 | 1,742 | **73,409** | 31,566 |
-| 64 | 859<br>native 71,014 | 1,049 | 2,531 | 1,720 | **73,763** | 32,048 |
-| 128 | 870<br>native 72,513 | 1,047 | 2,754 | 1,815 | **73,737** | 31,923 |
-| 256 | 864<br>native 73,044 | 1,054 | 2,766 | 1,815 | **73,489** | 31,952 |
+| 1 | 91<br>**native 7,899** | 963 | 2,435 | 1,498 | **8,218** | 6,203 |
+| 8 | 608<br>**native 44,162** | 1,061 | 2,768 | 1,835 | **42,043** | 29,294 |
+| 32 | 834<br>**native 72,599** | 1,062 | 2,564 | 1,742 | **73,409** | 31,566 |
+| 64 | 859<br>**native 71,014** | 1,049 | 2,531 | 1,720 | **73,763** | 32,048 |
+| 128 | 870<br>**native 72,513** | 1,047 | 2,754 | 1,815 | **73,737** | 31,923 |
+| 256 | 864<br>**native 73,044** | 1,054 | 2,766 | 1,815 | **73,489** | 31,952 |
 
 A sieve of Eratosthenes up to the query's n: tight numeric loops over an array.
 
@@ -133,9 +133,9 @@ Under FSR's figure, marked native: the same page with its loader calling the Rus
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 472<br>**native 10,811** | 1,372 | 8,665 | 3,053 | 10,499 | 7,751 |
+| 1 | 472<br>**native 10,811** | 1,372 | 8,665 | 3,053 | **10,499** | 7,751 |
 | 8 | 3,339<br>**native 55,759** | 1,551 | 10,183 | 3,841 | 51,338 | 30,923 |
-| 32 | 4,979<br>**native 92,141** | 1,562 | 10,147 | 3,789 | 88,265 | 32,928 |
+| 32 | 4,979<br>**native 92,141** | 1,562 | 10,147 | 3,789 | **88,265** | 32,928 |
 | 64 | 4,878<br>**native 97,380** | 1,523 | 10,004 | 3,645 | 90,790 | 33,102 |
 | 128 | 4,818<br>**native 98,020** | 1,487 | 9,787 | 3,589 | 92,004 | 32,953 |
 | 256 | 4,866<br>**native 98,589** | 1,481 | 9,522 | 3,645 | 92,903 | 32,923 |
@@ -149,7 +149,7 @@ Under FSR's figure, marked native: the same page with its loader calling the Rus
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1 | 129<br>native 512 | 433 | **577** | 542 | 542 | 520 |
-| 8 | 886<br>native 3,726 | 454 | 601 | 555 | **4,037** | 3,890 |
+| 8 | 886<br>native 3,726 | 454 | 601 | 555 | **4,037** | **3,890** |
 | 32 | 1,288<br>native 5,447 | 450 | 594 | 551 | **5,900** | 5,180 |
 | 64 | 1,272<br>native 5,127 | 449 | 601 | 545 | **5,913** | 5,057 |
 | 128 | 1,258<br>native 5,077 | 452 | 591 | 555 | **5,886** | 5,172 |
@@ -219,9 +219,9 @@ Ranked on p99.
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 0.07 / 0.10 | 0.69 / 1.47 | 0.09 / 0.36 | 0.29 / 0.96 | **0.08 / 0.10** | 0.11 / 0.14 |
+| 1 | **0.07 / 0.10** | 0.69 / 1.47 | 0.09 / 0.36 | 0.29 / 0.96 | **0.08 / 0.10** | 0.11 / 0.14 |
 | 8 | **0.11 / 0.17** | 5.09 / 7.68 | 0.47 / 1.33 | 1.84 / 4.29 | 0.14 / 0.21 | 0.24 / 0.48 |
-| 32 | **0.25 / 0.59** | 20.57 / 27.78 | 2.15 / 3.95 | 8.95 / 16.77 | 0.33 / 0.61 | 0.90 / 2.51 |
+| 32 | **0.25 / 0.59** | 20.57 / 27.78 | 2.15 / 3.95 | 8.95 / 16.77 | **0.33 / 0.61** | 0.90 / 2.51 |
 | 64 | **0.52 / 1.08** | 42.86 / 54.46 | 4.66 / 8.00 | 15.12 / 37.05 | 0.62 / 1.18 | 1.91 / 3.93 |
 | 128 | **1.03 / 2.23** | 83.64 / 106.71 | 9.33 / 16.52 | 27.02 / 77.04 | 1.17 / 2.77 | 3.89 / 6.49 |
 | 256 | **2.00 / 4.63** | 156.84 / 996.46 | 19.27 / 33.15 | 50.65 / 130.54 | 2.29 / 6.44 | 7.89 / 11.54 |
@@ -248,8 +248,8 @@ Ranked on p99.
 | 1 | **0.05 / 0.07** | 0.81 / 1.55 | 0.07 / 0.38 | 0.46 / 1.28 | 0.06 / 0.08 | 0.09 / 0.16 |
 | 8 | **0.10 / 0.14** | 6.09 / 9.24 | 0.40 / 1.21 | 3.02 / 6.37 | 0.12 / 0.18 | 0.22 / 0.50 |
 | 32 | **0.23 / 0.44** | 24.25 / 33.48 | 1.84 / 3.48 | 12.85 / 19.89 | 0.30 / 0.47 | 0.82 / 2.51 |
-| 64 | 0.44 / 0.90 | 50.29 / 64.34 | 3.97 / 7.20 | 25.84 / 38.47 | **0.58 / 0.88** | 1.76 / 3.95 |
-| 128 | 0.85 / 1.79 | 98.60 / 128.41 | 7.97 / 13.75 | 51.74 / 79.19 | **1.12 / 1.72** | 3.57 / 6.27 |
+| 64 | **0.44 / 0.90** | 50.29 / 64.34 | 3.97 / 7.20 | 25.84 / 38.47 | **0.58 / 0.88** | 1.76 / 3.95 |
+| 128 | **0.85 / 1.79** | 98.60 / 128.41 | 7.97 / 13.75 | 51.74 / 79.19 | **1.12 / 1.72** | 3.57 / 6.27 |
 | 256 | 1.64 / 3.82 | 173.43 / 1745.76 | 16.24 / 28.26 | 95.71 / 134.89 | **2.18 / 3.44** | 7.20 / 10.80 |
 
 Ranked on p99.
@@ -259,11 +259,11 @@ Ranked on p99.
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1 | 0.04 / 0.06 | 0.14 / 0.53 | 0.05 / 0.11 | 0.04 / 0.06 | **0.03 / 0.05** | 0.05 / 0.07 |
-| 8 | 0.07 / 0.12 | 1.08 / 2.35 | 0.25 / 0.77 | 0.16 / 0.48 | **0.06 / 0.10** | 0.10 / 0.14 |
-| 32 | 0.19 / 0.35 | 4.70 / 8.66 | 1.16 / 2.81 | 0.69 / 1.56 | **0.18 / 0.29** | 0.21 / 0.37 |
+| 8 | 0.07 / 0.13 | 1.08 / 2.35 | 0.25 / 0.77 | 0.16 / 0.48 | **0.06 / 0.10** | 0.10 / 0.14 |
+| 32 | 0.19 / 0.36 | 4.70 / 8.66 | 1.16 / 2.81 | 0.69 / 1.56 | **0.18 / 0.29** | 0.21 / 0.37 |
 | 64 | 0.37 / 0.73 | 9.26 / 15.31 | 2.35 / 4.56 | 1.44 / 3.08 | **0.37 / 0.55** | 0.38 / 0.72 |
-| 128 | 0.74 / 1.53 | 18.32 / 29.94 | 5.02 / 8.61 | 3.07 / 5.06 | **0.75 / 0.99** | 0.73 / 1.36 |
-| 256 | 1.44 / 3.19 | 36.50 / 59.72 | 10.37 / 17.35 | 6.34 / 7.99 | **1.51 / 1.82** | 1.44 / 2.70 |
+| 128 | 0.72 / 1.49 | 18.32 / 29.94 | 5.02 / 8.61 | 3.07 / 5.06 | **0.75 / 0.99** | 0.73 / 1.36 |
+| 256 | 1.40 / 3.05 | 36.50 / 59.72 | 10.37 / 17.35 | 6.34 / 7.99 | **1.51 / 1.82** | 1.44 / 2.70 |
 
 Ranked on p99.
 
@@ -286,7 +286,7 @@ Under FSR's figure, marked native: the same page with its loader calling the Rus
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 2.12 / 2.29<br>native 0.09 / 0.12 | 0.68 / 1.36 | 0.11 / 0.39 | 0.30 / 1.04 | **0.10 / 0.12** | 0.13 / 0.16 |
+| 1 | 2.12 / 2.29<br>**native 0.09 / 0.12** | 0.68 / 1.36 | 0.11 / 0.39 | 0.30 / 1.04 | **0.10 / 0.12** | 0.13 / 0.16 |
 | 8 | 2.30 / 3.33<br>**native 0.14 / 0.20** | 5.21 / 7.39 | 0.66 / 1.72 | 1.86 / 4.31 | 0.15 / 0.23 | 0.24 / 0.45 |
 | 32 | 6.29 / 12.39<br>native 0.32 / 0.91 | 20.13 / 26.90 | 3.04 / 4.99 | 9.39 / 16.90 | **0.35 / 0.68** | 0.88 / 2.40 |
 | 64 | 12.73 / 24.61<br>**native 0.64 / 1.33** | 41.39 / 50.74 | 6.32 / 10.15 | 15.00 / 38.44 | 0.67 / 1.50 | 1.85 / 3.82 |
@@ -301,7 +301,7 @@ Under FSR's figure, marked native: the same page with its loader calling the Rus
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 7.74 / 8.41<br>native 1.94 / 2.17 | 2.20 / 3.10 | **1.71 / 1.86** | 1.83 / 2.19 | 1.84 / 1.93 | 1.92 / 1.99 |
+| 1 | 7.74 / 8.41<br>native 1.94 / 2.17 | 2.20 / 3.10 | **1.71 / 1.86** | 1.83 / 2.19 | **1.84 / 1.93** | 1.92 / 1.99 |
 | 8 | 8.74 / 12.82<br>native 2.04 / 3.08 | 17.43 / 21.14 | 11.59 / 23.74 | 14.25 / 19.09 | 1.92 / 3.36 | **2.05 / 2.24** |
 | 32 | 24.44 / 45.58<br>native 5.71 / 12.00 | 69.97 / 81.44 | 52.33 / 103.28 | 62.09 / 98.28 | **5.16 / 11.23** | 5.25 / 17.08 |
 | 64 | 49.74 / 93.13<br>native 12.21 / 25.23 | 140.00 / 167.90 | 105.49 / 134.47 | 92.46 / 206.57 | **10.50 / 21.86** | 10.92 / 28.86 |
@@ -333,9 +333,9 @@ What the server used while it was loaded and what it takes to start.
 
 | Measure | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Spawn to first 200 | **16 ms** | 322 ms | 54 ms | 212 ms | 30 ms | 24 ms |
-| Resident at first 200 | 20.0 MB | 95.0 MB | 60.4 MB | 80.1 MB | **5.7 MB** | 10.2 MB |
-| Peak resident over the run | **47.0 MB** | 669.6 MB | 406.1 MB | 791.9 MB | 101.0 MB | 97.8 MB |
+| Spawn to first 200 | **14 ms** | 322 ms | 54 ms | 212 ms | 30 ms | 24 ms |
+| Resident at first 200 | 19.9 MB | 95.0 MB | 60.4 MB | 80.1 MB | **5.7 MB** | 10.2 MB |
+| Peak resident over the run | **37.6 MB** | 669.6 MB | 406.1 MB | 791.9 MB | 101.0 MB | 97.8 MB |
 
 #### home: server CPU % and resident MB
 
@@ -367,11 +367,11 @@ CPU is the server's user and system time over the cell's wall time, 100 per core
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 90% / 43.6 MB | 112% / 504.9 MB | 101% / 253.0 MB | 106% / 225.7 MB | **101% / 42.7 MB** | 111% / 50.6 MB |
-| 8 | 659% / 43.7 MB | 117% / 505.0 MB | 110% / 253.0 MB | 116% / 225.7 MB | **763% / 42.7 MB** | 843% / 52.4 MB |
-| 32 | 1114% / 44.9 MB | 122% / 516.5 MB | 110% / 256.4 MB | 116% / 250.0 MB | **1188% / 43.2 MB** | 911% / 53.2 MB |
-| 64 | 1098% / 45.0 MB | 123% / 526.8 MB | 111% / 268.5 MB | 117% / 276.3 MB | **1193% / 44.0 MB** | 910% / 53.4 MB |
-| 128 | **1103% / 45.0 MB** | 125% / 548.9 MB | 112% / 285.1 MB | 118% / 276.4 MB | 1194% / 46.8 MB | 910% / 53.7 MB |
+| 1 | **90% / 43.6 MB** | 112% / 504.9 MB | 101% / 253.0 MB | 106% / 225.7 MB | **101% / 42.7 MB** | 111% / 50.6 MB |
+| 8 | **659% / 43.7 MB** | 117% / 505.0 MB | 110% / 253.0 MB | 116% / 225.7 MB | **763% / 42.7 MB** | 843% / 52.4 MB |
+| 32 | **1114% / 44.9 MB** | 122% / 516.5 MB | 110% / 256.4 MB | 116% / 250.0 MB | **1188% / 43.2 MB** | 911% / 53.2 MB |
+| 64 | **1098% / 45.0 MB** | 123% / 526.8 MB | 111% / 268.5 MB | 117% / 276.3 MB | **1193% / 44.0 MB** | 910% / 53.4 MB |
+| 128 | **1103% / 45.0 MB** | 125% / 548.9 MB | 112% / 285.1 MB | 118% / 276.4 MB | **1194% / 46.8 MB** | 910% / 53.7 MB |
 | 256 | 1098% / 67.4 MB | 126% / 502.3 MB | 112% / 300.8 MB | 117% / 279.0 MB | **1184% / 52.7 MB** | 901% / 55.5 MB |
 
 CPU is the server's user and system time over the cell's wall time, 100 per core. Ranked on resident memory at the end of the cell.
@@ -380,12 +380,12 @@ CPU is the server's user and system time over the cell's wall time, 100 per core
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 78% / 67.8 MB | 107% / 514.6 MB | 100% / 303.6 MB | 109% / 279.2 MB | **100% / 53.5 MB** | 101% / 55.7 MB |
-| 8 | 542% / 67.8 MB | 117% / 514.7 MB | 116% / 303.5 MB | 129% / 279.2 MB | **633% / 53.6 MB** | 660% / 55.8 MB |
-| 32 | 976% / 68.0 MB | 119% / 515.0 MB | 116% / 303.6 MB | 129% / 279.2 MB | **936% / 53.7 MB** | 654% / 56.0 MB |
-| 64 | 991% / 68.0 MB | 121% / 520.8 MB | 117% / 304.3 MB | 129% / 279.4 MB | **975% / 53.7 MB** | 650% / 55.2 MB |
-| 128 | 1015% / 68.0 MB | 124% / 524.6 MB | 118% / 321.3 MB | 131% / 762.5 MB | **1001% / 53.8 MB** | 649% / 55.3 MB |
-| 256 | 1046% / 68.9 MB | 127% / 528.0 MB | 119% / 335.0 MB | 130% / 762.5 MB | 990% / 55.7 MB | **652% / 55.7 MB** |
+| 1 | 78% / 67.8 MB | 107% / 514.6 MB | 100% / 303.6 MB | 109% / 279.2 MB | **100% / 53.5 MB** | **101% / 55.7 MB** |
+| 8 | 542% / 67.8 MB | 117% / 514.7 MB | 116% / 303.5 MB | 129% / 279.2 MB | **633% / 53.6 MB** | **660% / 55.8 MB** |
+| 32 | 976% / 68.0 MB | 119% / 515.0 MB | 116% / 303.6 MB | 129% / 279.2 MB | **936% / 53.7 MB** | **654% / 56.0 MB** |
+| 64 | 991% / 68.0 MB | 121% / 520.8 MB | 117% / 304.3 MB | 129% / 279.4 MB | **975% / 53.7 MB** | **650% / 55.2 MB** |
+| 128 | 1015% / 68.0 MB | 124% / 524.6 MB | 118% / 321.3 MB | 131% / 762.5 MB | **1001% / 53.8 MB** | **649% / 55.3 MB** |
+| 256 | 1046% / 68.9 MB | 127% / 528.0 MB | 119% / 335.0 MB | 130% / 762.5 MB | **990% / 55.7 MB** | **652% / 55.7 MB** |
 
 CPU is the server's user and system time over the cell's wall time, 100 per core. Ranked on resident memory at the end of the cell.
 
@@ -393,12 +393,12 @@ CPU is the server's user and system time over the cell's wall time, 100 per core
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 82% / 69.1 MB | 105% / 537.6 MB | 101% / 336.2 MB | 107% / 762.5 MB | 100% / 56.0 MB | **108% / 55.8 MB** |
-| 8 | 578% / 69.1 MB | 117% / 537.6 MB | 115% / 336.2 MB | 124% / 762.5 MB | 685% / 56.0 MB | **712% / 55.8 MB** |
-| 32 | 1010% / 69.1 MB | 120% / 537.6 MB | 115% / 336.5 MB | 125% / 762.5 MB | 1070% / 56.3 MB | **741% / 55.9 MB** |
-| 64 | 1016% / 69.1 MB | 121% / 539.4 MB | 115% / 337.4 MB | 125% / 762.6 MB | 1082% / 56.4 MB | **735% / 56.0 MB** |
-| 128 | 1052% / 69.1 MB | 124% / 539.7 MB | 116% / 341.5 MB | 125% / 762.6 MB | 1056% / 56.5 MB | **739% / 56.0 MB** |
-| 256 | 1047% / 69.5 MB | 127% / 543.0 MB | 117% / 352.6 MB | 126% / 762.6 MB | 1078% / 56.7 MB | **721% / 56.3 MB** |
+| 1 | 82% / 69.1 MB | 105% / 537.6 MB | 101% / 336.2 MB | 107% / 762.5 MB | **100% / 56.0 MB** | **108% / 55.8 MB** |
+| 8 | 578% / 69.1 MB | 117% / 537.6 MB | 115% / 336.2 MB | 124% / 762.5 MB | **685% / 56.0 MB** | **712% / 55.8 MB** |
+| 32 | 1010% / 69.1 MB | 120% / 537.6 MB | 115% / 336.5 MB | 125% / 762.5 MB | **1070% / 56.3 MB** | **741% / 55.9 MB** |
+| 64 | 1016% / 69.1 MB | 121% / 539.4 MB | 115% / 337.4 MB | 125% / 762.6 MB | **1082% / 56.4 MB** | **735% / 56.0 MB** |
+| 128 | 1052% / 69.1 MB | 124% / 539.7 MB | 116% / 341.5 MB | 125% / 762.6 MB | **1056% / 56.5 MB** | **739% / 56.0 MB** |
+| 256 | 1047% / 69.5 MB | 127% / 543.0 MB | 117% / 352.6 MB | 126% / 762.6 MB | **1078% / 56.7 MB** | **721% / 56.3 MB** |
 
 CPU is the server's user and system time over the cell's wall time, 100 per core. Ranked on resident memory at the end of the cell.
 
@@ -419,12 +419,12 @@ CPU is the server's user and system time over the cell's wall time, 100 per core
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | **71% / 33.7 MB** | 111% / 512.5 MB | 92% / 367.7 MB | 72% / 761.3 MB | 59% / 57.1 MB | 59% / 53.5 MB |
-| 8 | **433% / 33.8 MB** | 113% / 512.4 MB | 119% / 367.7 MB | 100% / 761.3 MB | 334% / 57.1 MB | 421% / 53.6 MB |
-| 32 | **753% / 30.2 MB** | 113% / 512.4 MB | 120% / 368.0 MB | 100% / 761.3 MB | 571% / 57.1 MB | 790% / 54.2 MB |
-| 64 | **832% / 31.0 MB** | 113% / 513.0 MB | 121% / 368.4 MB | 101% / 761.4 MB | 612% / 57.1 MB | 766% / 54.5 MB |
-| 128 | **867% / 32.6 MB** | 114% / 512.8 MB | 121% / 369.7 MB | 101% / 761.4 MB | 628% / 57.1 MB | 797% / 55.0 MB |
-| 256 | **882% / 36.0 MB** | 114% / 512.7 MB | 122% / 370.7 MB | 102% / 761.4 MB | 647% / 57.2 MB | 806% / 61.5 MB |
+| 1 | **70% / 34.5 MB** | 111% / 512.5 MB | 92% / 367.7 MB | 72% / 761.3 MB | 59% / 57.1 MB | 59% / 53.5 MB |
+| 8 | **436% / 34.5 MB** | 113% / 512.4 MB | 119% / 367.7 MB | 100% / 761.3 MB | 334% / 57.1 MB | 421% / 53.6 MB |
+| 32 | **758% / 30.9 MB** | 113% / 512.4 MB | 120% / 368.0 MB | 100% / 761.3 MB | 571% / 57.1 MB | 790% / 54.2 MB |
+| 64 | **813% / 31.8 MB** | 113% / 513.0 MB | 121% / 368.4 MB | 101% / 761.4 MB | 612% / 57.1 MB | 766% / 54.5 MB |
+| 128 | **846% / 33.7 MB** | 114% / 512.8 MB | 121% / 369.7 MB | 101% / 761.4 MB | 628% / 57.1 MB | 797% / 55.0 MB |
+| 256 | **875% / 37.0 MB** | 114% / 512.7 MB | 122% / 370.7 MB | 102% / 761.4 MB | 647% / 57.2 MB | 806% / 61.5 MB |
 
 CPU is the server's user and system time over the cell's wall time, 100 per core. Ranked on resident memory at the end of the cell.
 
@@ -452,7 +452,7 @@ Under FSR's figure, marked native: the same page with its loader calling the Rus
 | 32 | 1291% / 126.8 MB<br>**native 1003% / 46.9 MB** | 121% / 585.0 MB | 113% / 373.1 MB | 128% / 762.5 MB | 976% / 61.6 MB | 690% / 62.6 MB |
 | 64 | 1280% / 117.4 MB<br>**native 1064% / 47.3 MB** | 121% / 585.2 MB | 114% / 373.2 MB | 128% / 762.5 MB | 1026% / 61.7 MB | 690% / 62.7 MB |
 | 128 | 1266% / 117.4 MB<br>**native 1074% / 53.1 MB** | 125% / 587.8 MB | 115% / 376.5 MB | 129% / 762.5 MB | 1034% / 62.0 MB | 685% / 62.8 MB |
-| 256 | 1289% / 117.4 MB<br>native 1081% / 69.5 MB | 127% / 592.6 MB | 116% / 386.8 MB | 129% / 762.5 MB | **1039% / 62.4 MB** | 688% / 63.0 MB |
+| 256 | 1289% / 117.4 MB<br>native 1081% / 69.5 MB | 127% / 592.6 MB | 116% / 386.8 MB | 129% / 762.5 MB | **1039% / 62.4 MB** | **688% / 63.0 MB** |
 
 CPU is the server's user and system time over the cell's wall time, 100 per core. Ranked on resident memory at the end of the cell.
 
@@ -462,12 +462,12 @@ Under FSR's figure, marked native: the same page with its loader calling the Rus
 
 | Clients | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | 99% / 117.5 MB<br>native 96% / 69.6 MB | 105% / 592.8 MB | 98% / 388.0 MB | 102% / 762.5 MB | **96% / 62.5 MB** | 96% / 63.6 MB |
-| 8 | 710% / 117.5 MB<br>native 719% / 69.6 MB | 108% / 592.8 MB | 101% / 387.7 MB | 105% / 762.5 MB | **753% / 62.5 MB** | 778% / 63.6 MB |
-| 32 | 1252% / 117.5 MB<br>native 1278% / 69.7 MB | 107% / 593.3 MB | 103% / 388.1 MB | 106% / 762.6 MB | **1292% / 62.6 MB** | 1234% / 63.7 MB |
-| 64 | 1266% / 117.5 MB<br>native 1191% / 69.7 MB | 107% / 594.6 MB | 104% / 388.8 MB | 106% / 762.6 MB | **1297% / 62.6 MB** | 1223% / 63.7 MB |
-| 128 | 1252% / 117.5 MB<br>native 1190% / 69.7 MB | 110% / 594.7 MB | 104% / 389.3 MB | 105% / 762.6 MB | **1291% / 62.7 MB** | 1257% / 63.9 MB |
-| 256 | 1252% / 117.5 MB<br>native 1224% / 69.7 MB | 110% / 594.9 MB | 89% / 389.3 MB | 93% / 762.6 MB | **1260% / 63.0 MB** | 1238% / 64.0 MB |
+| 1 | 99% / 117.5 MB<br>native 96% / 69.6 MB | 105% / 592.8 MB | 98% / 388.0 MB | 102% / 762.5 MB | **96% / 62.5 MB** | **96% / 63.6 MB** |
+| 8 | 710% / 117.5 MB<br>native 719% / 69.6 MB | 108% / 592.8 MB | 101% / 387.7 MB | 105% / 762.5 MB | **753% / 62.5 MB** | **778% / 63.6 MB** |
+| 32 | 1252% / 117.5 MB<br>native 1278% / 69.7 MB | 107% / 593.3 MB | 103% / 388.1 MB | 106% / 762.6 MB | **1292% / 62.6 MB** | **1234% / 63.7 MB** |
+| 64 | 1266% / 117.5 MB<br>native 1191% / 69.7 MB | 107% / 594.6 MB | 104% / 388.8 MB | 106% / 762.6 MB | **1297% / 62.6 MB** | **1223% / 63.7 MB** |
+| 128 | 1252% / 117.5 MB<br>native 1190% / 69.7 MB | 110% / 594.7 MB | 104% / 389.3 MB | 105% / 762.6 MB | **1291% / 62.7 MB** | **1257% / 63.9 MB** |
+| 256 | 1252% / 117.5 MB<br>native 1224% / 69.7 MB | 110% / 594.9 MB | 89% / 389.3 MB | 93% / 762.6 MB | **1260% / 63.0 MB** | **1238% / 64.0 MB** |
 
 CPU is the server's user and system time over the cell's wall time, 100 per core. Ranked on resident memory at the end of the cell.
 
@@ -482,7 +482,7 @@ Under FSR's figure, marked native: the same page with its loader calling the Rus
 | 32 | 1201% / 122.8 MB | 119% / 695.0 MB | 110% / 431.4 MB | 116% / 762.6 MB | **1180% / 70.3 MB** | 1117% / 88.0 MB |
 | 64 | 1152% / 122.8 MB | 121% / 691.2 MB | 109% / 441.4 MB | 117% / 762.7 MB | **1191% / 72.9 MB** | 1121% / 89.8 MB |
 | 128 | 1160% / 122.8 MB | 122% / 709.2 MB | 107% / 441.4 MB | 119% / 762.8 MB | **1216% / 79.8 MB** | 1106% / 94.1 MB |
-| 256 | 1120% / 122.8 MB | 112% / 703.1 MB | 108% / 441.4 MB | 118% / 763.2 MB | 1200% / 101.0 MB | **1113% / 97.8 MB** |
+| 256 | 1120% / 122.8 MB | 112% / 703.1 MB | 108% / 441.4 MB | 118% / 763.2 MB | **1200% / 101.0 MB** | **1113% / 97.8 MB** |
 
 CPU is the server's user and system time over the cell's wall time, 100 per core. Ranked on resident memory at the end of the cell.
 
@@ -518,12 +518,12 @@ The total is the deploy tree, which holds the server binary where there is one, 
 
 | Page | SnapFire FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| home | 1.9 KiB (5.9 KiB raw) | 1.9 KiB (6.4 KiB raw) | 1.1 KiB (2.7 KiB raw) | 1.1 KiB (2.3 KiB raw) | 1.1 KiB (2.2 KiB raw) | **1.1 KiB (2.5 KiB raw)** |
-| counter | 1.7 KiB (5.8 KiB raw) | 1.7 KiB (5.9 KiB raw) | 0.9 KiB (2.2 KiB raw) | 0.9 KiB (1.9 KiB raw) | 0.9 KiB (1.8 KiB raw) | **0.9 KiB (1.9 KiB raw)** |
-| catalog | 2.5 KiB (14.4 KiB raw) | 3.7 KiB (34.2 KiB raw) | **2.4 KiB (15.0 KiB raw)** | 2.9 KiB (15.4 KiB raw) | 2.7 KiB (15.5 KiB raw) | 4.3 KiB (27.9 KiB raw) |
-| product | 1.9 KiB (6.5 KiB raw) | 2.1 KiB (9.2 KiB raw) | **1.3 KiB (3.7 KiB raw)** | 1.3 KiB (3.5 KiB raw) | 1.6 KiB (4.0 KiB raw) | 1.7 KiB (4.9 KiB raw) |
+| home | 1.9 KiB (5.9 KiB raw) | 1.9 KiB (6.4 KiB raw) | **1.1 KiB (2.7 KiB raw)** | **1.1 KiB (2.3 KiB raw)** | **1.1 KiB (2.2 KiB raw)** | **1.1 KiB (2.5 KiB raw)** |
+| counter | 1.7 KiB (5.8 KiB raw) | 1.7 KiB (5.9 KiB raw) | **0.9 KiB (2.2 KiB raw)** | **0.9 KiB (1.9 KiB raw)** | **0.9 KiB (1.8 KiB raw)** | **0.9 KiB (1.9 KiB raw)** |
+| catalog | **2.5 KiB (14.4 KiB raw)** | 3.7 KiB (34.2 KiB raw) | **2.4 KiB (15.0 KiB raw)** | 2.9 KiB (15.4 KiB raw) | 2.7 KiB (15.5 KiB raw) | 4.3 KiB (27.9 KiB raw) |
+| product | 1.9 KiB (6.5 KiB raw) | 2.1 KiB (9.2 KiB raw) | **1.3 KiB (3.7 KiB raw)** | **1.3 KiB (3.5 KiB raw)** | 1.6 KiB (4.0 KiB raw) | 1.7 KiB (4.9 KiB raw) |
 | search | 2.0 KiB (7.7 KiB raw) | 2.4 KiB (12.9 KiB raw) | **1.5 KiB (5.4 KiB raw)** | 1.6 KiB (5.3 KiB raw) | 1.8 KiB (5.7 KiB raw) | 2.1 KiB (8.2 KiB raw) |
-| primes | 1.7 KiB (5.7 KiB raw) | 1.8 KiB (6.8 KiB raw) | 1.0 KiB (2.4 KiB raw) | **1.0 KiB (2.2 KiB raw)** | 1.3 KiB (2.8 KiB raw) | 1.1 KiB (2.6 KiB raw) |
+| primes | 1.7 KiB (5.7 KiB raw) | 1.8 KiB (6.8 KiB raw) | **1.0 KiB (2.4 KiB raw)** | **1.0 KiB (2.2 KiB raw)** | 1.3 KiB (2.8 KiB raw) | 1.1 KiB (2.6 KiB raw) |
 | report | 2.0 KiB (6.7 KiB raw) | 2.4 KiB (10.8 KiB raw) | **1.6 KiB (4.6 KiB raw)** | 1.7 KiB (4.6 KiB raw) | 1.9 KiB (5.2 KiB raw) | 2.2 KiB (7.2 KiB raw) |
 | words | 1.8 KiB (6.0 KiB raw) | 2.0 KiB (8.2 KiB raw) | **1.2 KiB (3.1 KiB raw)** | 1.2 KiB (3.0 KiB raw) | 1.4 KiB (3.6 KiB raw) | 1.4 KiB (4.3 KiB raw) |
 | table | **4.9 KiB (54.1 KiB raw)** | 13.5 KiB (203.6 KiB raw) | 7.3 KiB (92.7 KiB raw) | 10.8 KiB (91.3 KiB raw) | 8.3 KiB (107.5 KiB raw) | 22.5 KiB (229.0 KiB raw) |
