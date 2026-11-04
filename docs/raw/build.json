@@ -1,0 +1,343 @@
+{
+  "end": {
+    "at": "2026-11-03T16:52:52Z",
+    "load": 9.25,
+    "power_mode": "high power"
+  },
+  "machine": "Apple M4 Pro (14 cores)",
+  "records": [
+    {
+      "app": "fsr",
+      "kind": "cold",
+      "rep": 0,
+      "secs": 40.462027750000004,
+      "steps": [
+        {
+          "secs": 1.340695167,
+          "step": "fsr build app"
+        },
+        {
+          "secs": 38.581125708,
+          "step": "cargo build --release"
+        },
+        {
+          "secs": 0.540206875,
+          "step": "prerender"
+        }
+      ]
+    },
+    {
+      "app": "fsr",
+      "kind": "warm",
+      "rep": 1,
+      "secs": 35.918808498999994,
+      "steps": [
+        {
+          "secs": 0.089189291,
+          "step": "fsr build app"
+        },
+        {
+          "secs": 35.239151625,
+          "step": "cargo build --release"
+        },
+        {
+          "secs": 0.590467583,
+          "step": "prerender"
+        }
+      ]
+    },
+    {
+      "app": "fsr",
+      "kind": "warm",
+      "rep": 2,
+      "secs": 0.72945775,
+      "steps": [
+        {
+          "secs": 0.089219459,
+          "step": "fsr build app"
+        },
+        {
+          "secs": 0.142283583,
+          "step": "cargo build --release"
+        },
+        {
+          "secs": 0.497954708,
+          "step": "prerender"
+        }
+      ]
+    },
+    {
+      "app": "fsr",
+      "kind": "warm",
+      "rep": 3,
+      "secs": 0.69192925,
+      "steps": [
+        {
+          "secs": 0.090747041,
+          "step": "fsr build app"
+        },
+        {
+          "secs": 0.135884084,
+          "step": "cargo build --release"
+        },
+        {
+          "secs": 0.465298125,
+          "step": "prerender"
+        }
+      ]
+    },
+    {
+      "app": "nextjs",
+      "kind": "cold",
+      "rep": 0,
+      "secs": 2.758345833,
+      "steps": [
+        {
+          "secs": 2.758345833,
+          "step": "next build"
+        }
+      ]
+    },
+    {
+      "app": "nextjs",
+      "kind": "warm",
+      "rep": 1,
+      "secs": 1.5081578329999998,
+      "steps": [
+        {
+          "secs": 1.5081578329999998,
+          "step": "next build"
+        }
+      ]
+    },
+    {
+      "app": "nextjs",
+      "kind": "warm",
+      "rep": 2,
+      "secs": 1.412020083,
+      "steps": [
+        {
+          "secs": 1.412020083,
+          "step": "next build"
+        }
+      ]
+    },
+    {
+      "app": "nextjs",
+      "kind": "warm",
+      "rep": 3,
+      "secs": 1.401333334,
+      "steps": [
+        {
+          "secs": 1.401333334,
+          "step": "next build"
+        }
+      ]
+    },
+    {
+      "app": "sveltekit",
+      "kind": "cold",
+      "rep": 0,
+      "secs": 1.475624625,
+      "steps": [
+        {
+          "secs": 1.475624625,
+          "step": "vite build"
+        }
+      ]
+    },
+    {
+      "app": "sveltekit",
+      "kind": "warm",
+      "rep": 1,
+      "secs": 1.277913083,
+      "steps": [
+        {
+          "secs": 1.277913083,
+          "step": "vite build"
+        }
+      ]
+    },
+    {
+      "app": "sveltekit",
+      "kind": "warm",
+      "rep": 2,
+      "secs": 1.25582475,
+      "steps": [
+        {
+          "secs": 1.25582475,
+          "step": "vite build"
+        }
+      ]
+    },
+    {
+      "app": "sveltekit",
+      "kind": "warm",
+      "rep": 3,
+      "secs": 1.259200458,
+      "steps": [
+        {
+          "secs": 1.259200458,
+          "step": "vite build"
+        }
+      ]
+    },
+    {
+      "app": "nuxt",
+      "kind": "cold",
+      "rep": 0,
+      "secs": 3.374991125,
+      "steps": [
+        {
+          "secs": 3.374991125,
+          "step": "nuxt build"
+        }
+      ]
+    },
+    {
+      "app": "nuxt",
+      "kind": "warm",
+      "rep": 1,
+      "secs": 2.553930125,
+      "steps": [
+        {
+          "secs": 2.553930125,
+          "step": "nuxt build"
+        }
+      ]
+    },
+    {
+      "app": "nuxt",
+      "kind": "warm",
+      "rep": 2,
+      "secs": 2.549121167,
+      "steps": [
+        {
+          "secs": 2.549121167,
+          "step": "nuxt build"
+        }
+      ]
+    },
+    {
+      "app": "nuxt",
+      "kind": "warm",
+      "rep": 3,
+      "secs": 2.5743445,
+      "steps": [
+        {
+          "secs": 2.5743445,
+          "step": "nuxt build"
+        }
+      ]
+    },
+    {
+      "app": "leptos",
+      "kind": "cold",
+      "rep": 0,
+      "secs": 48.51948425,
+      "steps": [
+        {
+          "secs": 48.51948425,
+          "step": "cargo leptos build --release"
+        }
+      ]
+    },
+    {
+      "app": "leptos",
+      "kind": "warm",
+      "rep": 1,
+      "secs": 15.11445325,
+      "steps": [
+        {
+          "secs": 15.11445325,
+          "step": "cargo leptos build --release"
+        }
+      ]
+    },
+    {
+      "app": "leptos",
+      "kind": "warm",
+      "rep": 2,
+      "secs": 13.881804,
+      "steps": [
+        {
+          "secs": 13.881804,
+          "step": "cargo leptos build --release"
+        }
+      ]
+    },
+    {
+      "app": "leptos",
+      "kind": "warm",
+      "rep": 3,
+      "secs": 14.003723416,
+      "steps": [
+        {
+          "secs": 14.003723416,
+          "step": "cargo leptos build --release"
+        }
+      ]
+    },
+    {
+      "app": "dioxus",
+      "kind": "cold",
+      "rep": 0,
+      "secs": 56.93503025,
+      "steps": [
+        {
+          "secs": 56.93503025,
+          "step": "dx bundle --release"
+        }
+      ]
+    },
+    {
+      "app": "dioxus",
+      "kind": "warm",
+      "rep": 1,
+      "secs": 14.788901041,
+      "steps": [
+        {
+          "secs": 14.788901041,
+          "step": "dx bundle --release"
+        }
+      ]
+    },
+    {
+      "app": "dioxus",
+      "kind": "warm",
+      "rep": 2,
+      "secs": 13.205234959,
+      "steps": [
+        {
+          "secs": 13.205234959,
+          "step": "dx bundle --release"
+        }
+      ]
+    },
+    {
+      "app": "dioxus",
+      "kind": "warm",
+      "rep": 3,
+      "secs": 13.202708375,
+      "steps": [
+        {
+          "secs": 13.202708375,
+          "step": "dx bundle --release"
+        }
+      ]
+    }
+  ],
+  "start": {
+    "at": "2026-11-03T16:47:59Z",
+    "load": 20.43,
+    "power_mode": "high power"
+  },
+  "versions": {
+    "dioxus": "dioxus 0.7.10",
+    "fsr": "snapfire_fsr_host 0.22.0 at 8b6b64eb+dirty",
+    "leptos": "leptos 0.8.23",
+    "nextjs": "next 16.4.4, react 19.3.1",
+    "nuxt": "nuxt 4.6.4, vue 3.5.44",
+    "sveltekit": "@sveltejs/kit 3.1.1, svelte 5.57.3"
+  }
+}

@@ -1,0 +1,30 @@
+[package]
+name = "outfitters_dioxus"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+dioxus = { version = "0.7", features = ["fullstack", "router"] }
+serde = { version = "1", features = ["derive"] }
+
+[features]
+default = []
+web = ["dioxus/web"]
+server = ["dioxus/server"]
+
+[profile.release]
+debug = true
+
+[profile.wasm-release]
+inherits = "release"
+debug = false
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.server-release]
+inherits = "release"

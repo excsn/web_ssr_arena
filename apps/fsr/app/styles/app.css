@@ -1,0 +1,112 @@
+:root {
+  color-scheme: light dark;
+  --ink: #16181d;
+  --paper: #fbfbfd;
+  --line: #e3e4e8;
+  --accent: #2b6cb0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8e9ed;
+    --paper: #14161a;
+    --line: #2a2d34;
+    --accent: #63a4e8;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+a {
+  color: var(--accent);
+}
+
+.shell {
+  min-height: 100vh;
+}
+
+.bar {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 24px;
+  padding: 16px 24px;
+}
+
+.bar nav {
+  display: flex;
+  gap: 16px;
+}
+
+.brand {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 64rem;
+  padding: 48px 24px;
+}
+
+.foot {
+  border-top: 1px solid var(--line);
+  padding: 16px 24px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin: 0 0 12px;
+}
+
+.features {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  list-style: none;
+  padding: 0;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.stock.out {
+  opacity: 0.6;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.counter {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}

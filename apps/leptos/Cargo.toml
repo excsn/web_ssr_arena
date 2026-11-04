@@ -1,0 +1,51 @@
+[package]
+name = "outfitters_leptos"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+axum = { version = "0.8", optional = true }
+console_error_panic_hook = { version = "0.1", optional = true }
+http = "1"
+leptos = "0.8"
+leptos_axum = { version = "0.8", optional = true }
+leptos_meta = "0.8"
+leptos_router = "0.8"
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net"], optional = true }
+wasm-bindgen = { version = "0.2", optional = true }
+
+[features]
+hydrate = ["leptos/hydrate", "dep:console_error_panic_hook", "dep:wasm-bindgen"]
+ssr = ["dep:axum", "dep:tokio", "dep:leptos_axum", "leptos/ssr", "leptos_meta/ssr", "leptos_router/ssr"]
+
+[profile.release]
+debug = true
+
+[profile.wasm-release]
+inherits = "release"
+debug = false
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[package.metadata.leptos]
+output-name = "outfitters_leptos"
+site-root = "target/site"
+site-pkg-dir = "pkg"
+style-file = "style/app.css"
+site-addr = "127.0.0.1:3105"
+reload-port = 3115
+env = "PROD"
+bin-features = ["ssr"]
+bin-default-features = false
+lib-features = ["hydrate"]
+lib-default-features = false
+lib-profile-release = "wasm-release"
