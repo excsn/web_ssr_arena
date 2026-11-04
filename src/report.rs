@@ -549,6 +549,29 @@ fn and_list(items: &[String]) -> String {
   }
 }
 
+/// When the builds ran, with the apps each sitting covers when they were not all built at once.
+fn build_times(build: &Value) -> String {
+  let mut sittings: Vec<(String, Vec<String>)> = Vec::new();
+  for record in build["records"].as_array().into_iter().flatten() {
+    let start = record.get("start").unwrap_or(&build["start"]);
+    let end = record.get("end").unwrap_or(&build["end"]);
+    let line = format!("{}. {}", state_line("Started", start), state_line("ended", end));
+    let app = app_name(record["app"].as_str().unwrap_or("?")).to_owned();
+    match sittings.iter_mut().find(|(l, _)| *l == line) {
+      Some((_, apps)) => {
+        if !apps.contains(&app) {
+          apps.push(app);
+        }
+      }
+      None => sittings.push((line, vec![app])),
+    }
+  }
+  match sittings.as_slice() {
+    [(line, _)] => line.clone(),
+    _ => sittings.iter().map(|(line, apps)| format!("{line} for {}", and_list(apps))).collect::<Vec<_>>().join("; "),
+  }
+}
+
 /// When the sizes were measured, with the apps each time covers when they were not all measured at once.
 fn size_times(size: &Value) -> String {
   let mut times: Vec<(String, Vec<String>)> = Vec::new();
@@ -609,7 +632,7 @@ pub fn write(raw: &Path, docs: &Path) -> Result<Vec<PathBuf>, String> {
     }
   }
   if let Some(build) = &build {
-    let _ = writeln!(md, "Build: {}. {}.\n", state_line("Started", &build["start"]), state_line("ended", &build["end"]));
+    let _ = writeln!(md, "Build: {}.\n", build_times(build));
   }
   if let Some(size) = &size {
     let _ = writeln!(md, "Size: measured {}.\n", size_times(size));
@@ -733,6 +756,22 @@ mod tests {
     };
     assert!(table.markdown().contains("| home | - | **257.1 KiB** | 483.2 KiB |"));
     assert_eq!(table.json()["rows"][0]["cells"][0], json!({ "display": "-", "best": false, "above_ranked": false }));
+  }
+
+  #[test]
+  fn a_build_of_one_app_says_when_each_was_built() {
+    let state = |at: &str| json!({ "at": at, "power_mode": "high power", "load": 5.0 });
+    let build = json!({ "records": [
+      { "app": "fsr", "start": state("t2"), "end": state("t3") },
+      { "app": "leptos", "start": state("t0"), "end": state("t1") },
+      { "app": "dioxus", "start": state("t0"), "end": state("t1") },
+    ]});
+    assert_eq!(
+      build_times(&build),
+      "Started t2 in high power power mode at load 5.0. ended t3 in high power power mode at load 5.0 for SnapFire FSR; Started t0 in high power power mode at load 5.0. ended t1 in high power power mode at load 5.0 for Leptos and Dioxus"
+    );
+    let old = json!({ "start": state("t0"), "end": state("t1"), "records": [{ "app": "fsr" }] });
+    assert_eq!(build_times(&old), "Started t0 in high power power mode at load 5.0. ended t1 in high power power mode at load 5.0");
   }
 
   #[test]

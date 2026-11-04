@@ -164,13 +164,20 @@ async fn build(a: &Args) -> Result<(), String> {
       record["app"] = json!(app.id);
       record["rep"] = json!(rep);
       println!("{:<10} {:<5} {:>8.2} s", app.id, record["kind"].as_str().unwrap_or("?"), record["secs"].as_f64().unwrap_or(0.0));
+      record["version"] = json!(app.version());
       records.push(record);
     }
     app.finish().map_err(|e| format!("{}: {e}", app.id))?;
   }
   let end = machine::state();
   say_state("end", &end);
-  let path = write_raw("build", &json!({ "machine": a.machine, "start": start, "end": end, "versions": versions(&a.apps), "records": records }))?;
+  for record in &mut records {
+    record["start"] = start.clone();
+    record["end"] = end.clone();
+  }
+  let earlier = std::fs::read_to_string(raw_dir().join("build.json")).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok());
+  let records = merged_by_app(earlier.as_ref(), records, &["start", "end"]);
+  let path = write_raw("build", &json!({ "machine": a.machine, "records": records }))?;
   println!("wrote {}", path.display());
   Ok(())
 }
@@ -194,27 +201,41 @@ async fn size(a: &Args) -> Result<(), String> {
   Ok(())
 }
 
-/// The size records of `old` with each app in `measured` replaced where it stood, each kept record given the version and time its file recorded.
-fn merged_sizes(old: Option<&Value>, measured: Vec<Value>) -> Vec<Value> {
+/// The records of `old` with every record of an app in `measured` replaced by that app's new ones, where its first stood. A kept record without a version takes the one `old` recorded for its app and each field of `fill` it lacks from `old` itself.
+fn merged_by_app(old: Option<&Value>, measured: Vec<Value>, fill: &[&str]) -> Vec<Value> {
+  let remeasured = |r: &Value| measured.iter().any(|m| m["app"] == r["app"]);
   let mut merged: Vec<Value> = Vec::new();
   for record in old.and_then(|o| o["records"].as_array()).into_iter().flatten() {
-    let mut record = record.clone();
-    let app = record["app"].as_str().unwrap_or_default().to_owned();
-    if record.get("version").is_none() {
-      record["version"] = old.map_or(Value::Null, |o| o["versions"][&app].clone());
+    if remeasured(record) {
+      if !merged.iter().any(|m| m["app"] == record["app"]) {
+        merged.extend(measured.iter().filter(|m| m["app"] == record["app"]).cloned());
+      }
+      continue;
     }
-    if record.get("at").is_none() && old.is_some_and(|o| o.get("at").is_some()) {
-      record["at"] = old.map_or(Value::Null, |o| o["at"].clone());
+    let mut record = record.clone();
+    if let Some(old) = old {
+      let app = record["app"].as_str().unwrap_or_default().to_owned();
+      if record.get("version").is_none() {
+        record["version"] = old["versions"][&app].clone();
+      }
+      for field in fill {
+        if record.get(*field).is_none() && old.get(*field).is_some() {
+          record[*field] = old[*field].clone();
+        }
+      }
     }
     merged.push(record);
   }
-  for record in measured {
-    match merged.iter_mut().find(|r| r["app"] == record["app"]) {
-      Some(slot) => *slot = record,
-      None => merged.push(record),
+  for record in &measured {
+    if !merged.iter().any(|m| m["app"] == record["app"]) {
+      merged.extend(measured.iter().filter(|m| m["app"] == record["app"]).cloned());
     }
   }
   merged
+}
+
+fn merged_sizes(old: Option<&Value>, measured: Vec<Value>) -> Vec<Value> {
+  merged_by_app(old, measured, &["at"])
 }
 
 /// Each cell, server and sitting of a run as it lands, one JSON object per line, so a stopped run can be resumed.
@@ -436,7 +457,7 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
-  use super::{merged_sizes, parse_cell, parse_state, read_journal};
+  use super::{merged_by_app, merged_sizes, parse_cell, parse_state, read_journal};
   use serde_json::json;
 
   #[test]
@@ -454,6 +475,18 @@ mod tests {
     let versions: Vec<_> = journal.records.iter().map(|r| r["version"].as_str()).collect();
     assert_eq!(versions, [Some("A"), Some("B")]);
     assert_eq!(journal.sittings[1]["versions"]["fsr"], "B");
+  }
+
+  #[test]
+  fn builds_of_one_app_replace_all_its_records_and_keep_the_others_with_their_sitting() {
+    let old = json!({
+      "start": { "at": "t0" }, "end": { "at": "t1" },
+      "versions": { "fsr": "A", "leptos": "L" },
+      "records": [{ "app": "fsr", "rep": 0 }, { "app": "leptos", "rep": 0 }, { "app": "fsr", "rep": 1 }],
+    });
+    let new = json!({ "app": "fsr", "rep": 0, "version": "B", "start": { "at": "t2" }, "end": { "at": "t3" } });
+    let merged = merged_by_app(Some(&old), vec![new.clone()], &["start", "end"]);
+    assert_eq!(merged, vec![new, json!({ "app": "leptos", "rep": 0, "version": "L", "start": { "at": "t0" }, "end": { "at": "t1" } })]);
   }
 
   #[test]
