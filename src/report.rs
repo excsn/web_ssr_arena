@@ -11,7 +11,7 @@ use crate::pages::PAGES;
 
 const SUMMARY: &str = "The same storefront written in SnapFire FSR, Next.js, SvelteKit, Nuxt, Leptos and Dioxus, built for production and served on one machine: build time, deploy size, bytes per page and requests per second.";
 
-const READING: &str = "Higher is better for requests per second. Lower is better for latency, memory, build time and size.";
+const READING: &str = "Higher is better for requests per second. Lower is better for latency, memory, build time and size. Bold marks the best figure in a row and every figure within 5% of it.";
 
 const METHOD: &[&str] = &[
   "Every application is the same storefront: 48 products in a module each imports, a landing page and a counter page built once at build time and a catalog, product and search page rendered for each request because each reads the query or a parameter. The data, the compute code and the stylesheet are shared byte for byte, with the data and compute code written once in TypeScript and once in Rust for Leptos and Dioxus. The views are shared as TSX by FSR and Next.js and written once each as Svelte, Vue, Leptos and Dioxus components for those four, with the same markup.",
@@ -64,6 +64,9 @@ fn thousands(v: f64) -> String {
 fn kib(bytes: f64) -> String {
   if bytes >= 1_048_576.0 { format!("{:.1} MiB", bytes / 1_048_576.0) } else { format!("{:.1} KiB", bytes / 1024.0) }
 }
+
+/// How far from a row's best figure another still counts as best, as a fraction of the best.
+const BEST_WITHIN: f64 = 0.05;
 
 /// Whether a row's figures pick a best: there are two or more and they are not all the same.
 fn ranked(present: &[f64]) -> bool {
@@ -131,6 +134,11 @@ impl Table {
     (present, best)
   }
 
+  /// Whether `v` is marked best in a row of `present` figures whose best is `best`: the best itself or within [`BEST_WITHIN`] of it.
+  fn is_best(&self, present: &[f64], best: f64, v: f64) -> bool {
+    ranked(present) && if self.higher_is_better { v >= best * (1.0 - BEST_WITHIN) } else { v <= best * (1.0 + BEST_WITHIN) }
+  }
+
   fn json(&self) -> Value {
     let rows: Vec<Value> = self
       .rows
@@ -143,12 +151,12 @@ impl Table {
           .enumerate()
           .map(|(c, cell)| {
             cell.as_ref().map_or_else(|| self.none.map_or(Value::Null, |none| json!({ "display": none, "best": false, "above_ranked": false })), |(v, display)| {
-              let mut out = json!({ "display": display, "best": ranked(&present) && *v == best, "above_ranked": false });
+              let mut out = json!({ "display": display, "best": self.is_best(&present, best, *v), "above_ranked": false });
               if let Some(spread) = self.spread.get(&(r, c)) {
                 spread.write(&mut out);
               }
               if let Some(under) = self.under.get(&(r, c)) {
-                let mut native = json!({ "display": under.display, "best": ranked(&present) && under.value == best });
+                let mut native = json!({ "display": under.display, "best": self.is_best(&present, best, under.value) });
                 if let Some(spread) = &under.spread {
                   spread.write(&mut native);
                 }
@@ -187,9 +195,9 @@ impl Table {
       }
       let (present, best) = self.row_best(r, cells);
       for (c, cell) in cells.iter().enumerate() {
-        let under = self.under.get(&(r, c)).map_or(String::new(), |u| if ranked(&present) && u.value == best { format!("<br>**native {}**", u.display) } else { format!("<br>native {}", u.display) });
+        let under = self.under.get(&(r, c)).map_or(String::new(), |u| if self.is_best(&present, best, u.value) { format!("<br>**native {}**", u.display) } else { format!("<br>native {}", u.display) });
         match cell {
-          Some((v, display)) if ranked(&present) && *v == best => {
+          Some((v, display)) if self.is_best(&present, best, *v) => {
             let _ = write!(out, " **{display}**{under} |");
           }
           Some((_, display)) => {
@@ -595,7 +603,7 @@ pub fn write(raw: &Path, docs: &Path) -> Result<Vec<PathBuf>, String> {
   }
   md.push('\n');
   if let Some(perf) = &perf {
-    let _ = writeln!(md, "Load: {} s cells after {} s of warm-up per page, {} repetitions, {} client threads. {}. {}.\n", perf["secs"], perf["warmup_secs"], perf["reps"], perf["client_threads"], state_line("Started", &perf["start"]), state_line("ended", &perf["end"]));
+    let _ = writeln!(md, "Load: {} s cells after {} s of warm-up per page, {} client threads. {}. {}.\n", perf["secs"], perf["warmup_secs"], perf["client_threads"], state_line("Started", &perf["start"]), state_line("ended", &perf["end"]));
     if let Some(partial) = partial(perf) {
       let _ = writeln!(md, "{partial}\n");
     }
@@ -725,6 +733,26 @@ mod tests {
     };
     assert!(table.markdown().contains("| home | - | **257.1 KiB** | 483.2 KiB |"));
     assert_eq!(table.json()["rows"][0]["cells"][0], json!({ "display": "-", "best": false, "above_ranked": false }));
+  }
+
+  #[test]
+  fn every_figure_within_five_percent_of_the_best_is_marked_best() {
+    let row = |higher_is_better: bool, values: &[f64]| Table {
+      id: "t".to_owned(),
+      title: "t".to_owned(),
+      heads: vec!["Clients".to_owned()],
+      apps: values.iter().map(|_| "fsr".to_owned()).collect(),
+      rows: vec![(vec!["128".to_owned()], values.iter().map(|v| Some((*v, v.to_string()))).collect())],
+      higher_is_better,
+      notes: vec![],
+      spread: BTreeMap::new(),
+      under: BTreeMap::new(),
+      none: None,
+    };
+    let best = |table: Table| table.json()["rows"][0]["cells"].as_array().unwrap().iter().map(|c| c["best"] == true).collect::<Vec<_>>();
+    assert_eq!(best(row(true, &[164459.0, 6717.0, 39999.0, 169373.0, 170573.0, 162000.0])), [true, false, false, true, true, false]);
+    assert_eq!(best(row(false, &[1.0, 1.05, 1.06])), [true, true, false]);
+    assert!(row(true, &[100.0, 96.0, 90.0]).markdown().contains("| 128 | **100** | **96** | 90 |"));
   }
 
   #[test]
