@@ -708,9 +708,11 @@ dependencies = [
 
 [[package]]
 name = "fibre_tracing"
-version = "0.5.2"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "93ef7a74f53cd8424ee3725a9d10e572926e3dec097f6a6aad48ee332bf64728"
 dependencies = [
- "parking_lot 0.12.5",
+ "parking_lot 0.13.0",
  "tracing",
  "tracing-subscriber",
 ]
@@ -2456,7 +2458,9 @@ dependencies = [
 
 [[package]]
 name = "snapfire_compiler_wire"
-version = "0.4.0"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b0a17cbe2801d40208b9625eb12dd7f6bafef91aa09352a95261d88a9acb396b"
 dependencies = [
  "serde",
  "serde_json",
@@ -2465,7 +2469,9 @@ dependencies = [
 
 [[package]]
 name = "snapfire_fsr"
-version = "0.18.0"
+version = "0.19.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "010811e3cfee61c2dc2ff03d7a634e25e02344c4b8180a94f51459461afb250e"
 dependencies = [
  "futures-util",
  "snapfire_fsr_core",
@@ -2480,7 +2486,9 @@ dependencies = [
 
 [[package]]
 name = "snapfire_fsr_core"
-version = "0.9.0"
+version = "0.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5f376aebf1df06d5926019ac6fda73297caa244b7a6644d8c3a1f58f91bf0f2d"
 dependencies = [
  "foldhash",
  "hashbrown 0.17.1",
@@ -2495,7 +2503,9 @@ dependencies = [
 
 [[package]]
 name = "snapfire_fsr_host"
-version = "0.22.0"
+version = "0.23.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a3af70c91f2c82d543820b5e00fb65f9d97596632d28058be0a6cc75436ed0d7"
 dependencies = [
  "base64 0.22.1",
  "bytes",
@@ -2542,7 +2552,9 @@ dependencies = [
 
 [[package]]
 name = "snapfire_fsr_ir"
-version = "0.19.0"
+version = "0.20.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "610701e397b0e686c871d0957b7471e04179c8eac7453feebfa9d2ac8a83ff72"
 dependencies = [
  "chrono",
  "fixed_decimal",
@@ -2568,7 +2580,7 @@ dependencies = [
  "smol_str",
  "snapfire_fsr_core",
  "snapfire_fsr_runtime",
- "snapfire_i8n",
+ "snapfire_i18n",
  "thiserror 2.0.21",
  "tracing",
  "unicode-normalization",
@@ -2583,6 +2595,8 @@ dependencies = [
 [[package]]
 name = "snapfire_fsr_macros"
 version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e87ba1e13372c61446cdc2c6e18ac45946bd82aad449d2180fb9e6d068a32313"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2591,7 +2605,9 @@ dependencies = [
 
 [[package]]
 name = "snapfire_fsr_payload"
-version = "0.10.0"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3942b727e575d643d385d2a0e28d931ecebbebd74c9cdbc16937f0daeae473a1"
 dependencies = [
  "base64 0.22.1",
  "serde_json",
@@ -2600,7 +2616,9 @@ dependencies = [
 
 [[package]]
 name = "snapfire_fsr_plan"
-version = "0.18.0"
+version = "0.19.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a383aee41795530e6aa61a037b1fc0f5e878570ba90267d85232651729b6d4fe"
 dependencies = [
  "serde",
  "serde_json",
@@ -2611,7 +2629,9 @@ dependencies = [
 
 [[package]]
 name = "snapfire_fsr_runtime"
-version = "0.13.0"
+version = "0.14.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a91509dff29e05528e6d716f6713387de07221afbac7a35daa2805ad1719c0ec"
 dependencies = [
  "fibre_cache",
  "form_urlencoded",
@@ -2630,7 +2650,9 @@ dependencies = [
 
 [[package]]
 name = "snapfire_fsr_service"
-version = "0.12.0"
+version = "0.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "13e31dd20c2b15df481cdccc844fc724309896f95ebb55fff860aefa847ed15a"
 dependencies = [
  "fibre_cache",
  "futures-util",
@@ -2648,7 +2670,9 @@ dependencies = [
 
 [[package]]
 name = "snapfire_fsr_session"
-version = "0.12.0"
+version = "0.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "532613fc3a1ebe5d01a726a98a1e0918fcbdb07b528f9f1e16354ee050a95206"
 dependencies = [
  "aes-gcm",
  "base64 0.22.1",
@@ -2665,12 +2689,16 @@ dependencies = [
 ]
 
 [[package]]
-name = "snapfire_i8n"
+name = "snapfire_i18n"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5c832fa31d9447cf2da9c7b06ea9c40ebea5f9f95242a35ca8b2f8c190bef76d"
 
 [[package]]
 name = "snapfire_sitemap"
 version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cbb14566556f69bc2fb9c5691195e40093795b1d2a2a71acab68da8f3518bfaa"
 dependencies = [
  "chrono",
 ]
@@ -3588,23 +3616,3 @@ name = "zmij"
 version = "1.0.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b"
-
-[[patch.unused]]
-name = "snapfire_fsr_auth"
-version = "0.12.0"
-
-[[patch.unused]]
-name = "snapfire_fsr_engine"
-version = "0.6.1"
-
-[[patch.unused]]
-name = "snapfire_fsr_lower"
-version = "0.19.0"
-
-[[patch.unused]]
-name = "snapfire_fsr_sites"
-version = "0.18.1"
-
-[[patch.unused]]
-name = "snapfire_fsr_tera"
-version = "0.12.0"

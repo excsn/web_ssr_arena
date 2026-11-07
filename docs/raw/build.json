@@ -4,126 +4,126 @@
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-04T15:19:18Z",
-        "load": 23.73,
+        "at": "2026-11-07T20:17:24Z",
+        "load": 23.3,
         "power_mode": "high power"
       },
       "kind": "cold",
       "rep": 0,
-      "secs": 44.595057874999995,
+      "secs": 45.261064251,
       "start": {
-        "at": "2026-11-04T15:18:30Z",
-        "load": 7.01,
+        "at": "2026-11-07T20:16:35Z",
+        "load": 14.28,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.268339667,
+          "secs": 0.090834834,
           "step": "fsr build app"
         },
         {
-          "secs": 43.793171333,
+          "secs": 44.66283225,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.533546875,
+          "secs": 0.507397167,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.22.0 at 9b355b7a"
+      "version": "snapfire_fsr_host 0.23.0 at 907014e6+dirty.759746d9"
     },
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-04T15:19:18Z",
-        "load": 23.73,
+        "at": "2026-11-07T20:17:24Z",
+        "load": 23.3,
         "power_mode": "high power"
       },
       "kind": "warm",
       "rep": 1,
-      "secs": 1.226532791,
+      "secs": 1.073946626,
       "start": {
-        "at": "2026-11-04T15:18:30Z",
-        "load": 7.01,
+        "at": "2026-11-07T20:16:35Z",
+        "load": 14.28,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.233081542,
+          "secs": 0.239339959,
           "step": "fsr build app"
         },
         {
-          "secs": 0.452108458,
+          "secs": 0.331974667,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.541342791,
+          "secs": 0.502632,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.22.0 at 9b355b7a"
+      "version": "snapfire_fsr_host 0.23.0 at 907014e6+dirty.759746d9"
     },
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-04T15:19:18Z",
-        "load": 23.73,
+        "at": "2026-11-07T20:17:24Z",
+        "load": 23.3,
         "power_mode": "high power"
       },
       "kind": "warm",
       "rep": 2,
-      "secs": 0.66929775,
+      "secs": 0.739958958,
       "start": {
-        "at": "2026-11-04T15:18:30Z",
-        "load": 7.01,
+        "at": "2026-11-07T20:16:35Z",
+        "load": 14.28,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.091623833,
+          "secs": 0.0915535,
           "step": "fsr build app"
         },
         {
-          "secs": 0.13853775,
+          "secs": 0.151395958,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.439136167,
+          "secs": 0.4970095,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.22.0 at 9b355b7a"
+      "version": "snapfire_fsr_host 0.23.0 at 907014e6+dirty.759746d9"
     },
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-04T15:19:18Z",
-        "load": 23.73,
+        "at": "2026-11-07T20:17:24Z",
+        "load": 23.3,
         "power_mode": "high power"
       },
       "kind": "warm",
       "rep": 3,
-      "secs": 0.6831514169999999,
+      "secs": 0.750108416,
       "start": {
-        "at": "2026-11-04T15:18:30Z",
-        "load": 7.01,
+        "at": "2026-11-07T20:16:35Z",
+        "load": 14.28,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.093163042,
+          "secs": 0.097388291,
           "step": "fsr build app"
         },
         {
-          "secs": 0.144691875,
+          "secs": 0.149975833,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.4452965,
+          "secs": 0.502744292,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.22.0 at 9b355b7a"
+      "version": "snapfire_fsr_host 0.23.0 at 907014e6+dirty.759746d9"
     },
     {
       "app": "nextjs",

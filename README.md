@@ -8,15 +8,15 @@ Requests per second at 128 concurrent clients, measured on an Apple M4 Pro (14 c
 
 | Page | FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Home page | **172,092** | 8,430 | 32,079 | 29,283 | **164,653** | 36,091 |
-| Product list | **54,810** | 851 | 6,167 | 1,929 | 35,044 | 13,049 |
-| Product page | **117,041** | 1,481 | 13,171 | 3,722 | 102,790 | 32,175 |
-| Search | **102,570** | 1,412 | 11,146 | 3,239 | 79,564 | 26,927 |
-| JSON API | **167,382** | 6,717 | 24,814 | 39,999 | **169,373** | **170,573** |
-| 500-row table | **15,029** | 186 | 1,157 | 1,233 | 14,137 | 10,686 |
-| Prime sieve (heavy compute) | 1,826<br>**native 80,090** | 1,047 | 2,754 | 1,815 | 73,737 | 31,923 |
-| Sales report (heavy compute) | 6,443<br>**native 104,026** | 1,487 | 9,787 | 3,589 | 92,004 | 32,953 |
-| Word count (heavy compute) | 1,397<br>native 5,494 | 452 | 591 | 555 | **5,886** | 5,172 |
+| Home page | **169,908** | 8,430 | 32,079 | 29,283 | **164,653** | 36,091 |
+| Product list | **55,027** | 851 | 6,167 | 1,929 | 35,044 | 13,049 |
+| Product page | **118,627** | 1,481 | 13,171 | 3,722 | 102,790 | 32,175 |
+| Search | **102,374** | 1,412 | 11,146 | 3,239 | 79,564 | 26,927 |
+| JSON API | **167,442** | 6,717 | 24,814 | 39,999 | **169,373** | **170,573** |
+| 500-row table | **14,817** | 186 | 1,157 | 1,233 | **14,137** | 10,686 |
+| Prime sieve (heavy compute) | 1,839<br>**native 80,995** | 1,047 | 2,754 | 1,815 | 73,737 | 31,923 |
+| Sales report (heavy compute) | 6,252<br>**native 106,933** | 1,487 | 9,787 | 3,589 | 92,004 | 32,953 |
+| Word count (heavy compute) | 1,365<br>native 5,392 | 452 | 591 | 555 | **5,886** | 5,172 |
 
 Bold marks the best figure in a row and every figure within 5% of it.
 
@@ -24,13 +24,13 @@ On the compute pages FSR is measured twice. The first figure has the loader comp
 
 | Measure | FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Cold build | 44.6 s | 2.8 s | **1.5 s** | 3.4 s | 48.5 s | 56.9 s |
-| Rebuild after one change | **0.7 s** | 1.4 s | 1.3 s | 2.6 s | 14.0 s | 13.2 s |
-| Total to deploy, runtime included | 25.6 MiB | 151.8 MiB | 108.8 MiB | 109.7 MiB | 13.3 MiB | **8.6 MiB** |
+| Cold build | 45.3 s | 2.8 s | **1.5 s** | 3.4 s | 48.5 s | 56.9 s |
+| Rebuild after one change | **0.8 s** | 1.4 s | 1.3 s | 2.6 s | 14.0 s | 13.2 s |
+| Total to deploy, runtime included | 25.7 MiB | 151.8 MiB | 108.8 MiB | 109.7 MiB | 13.3 MiB | **8.6 MiB** |
 | JavaScript per page, gzipped | 40.0 KiB | 135.0 KiB | 33.7 KiB | 69.3 KiB | **6.7 KiB** | 15.8 KiB |
 | WebAssembly per page, gzipped | - | - | - | - | **257.1 KiB** | 483.2 KiB |
-| Memory at start | 19.9 MB | 95.0 MB | 60.4 MB | 80.1 MB | **5.7 MB** | 10.2 MB |
-| Start to first response | **14 ms** | 322 ms | 54 ms | 212 ms | 30 ms | 24 ms |
+| Memory at start | 18.9 MB | 95.0 MB | 60.4 MB | 80.1 MB | **5.7 MB** | 10.2 MB |
+| Start to first response | **21 ms** | 322 ms | 54 ms | 212 ms | 30 ms | 24 ms |
 
 The total to deploy is the deploy tree plus the runtime installed beside it: Node, 107.3 MiB, for Next.js, SvelteKit and Nuxt. Bytes per page are for the counter page.
 
