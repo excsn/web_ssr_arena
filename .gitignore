@@ -17,3 +17,4 @@ apps/sveltekit/build-cold/
 .output-cold/
 .vite-cold/
 tools/
+apps/fsr/Cargo.lock
