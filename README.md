@@ -8,15 +8,15 @@ Requests per second at 128 concurrent clients, measured on an Apple M4 Pro (14 c
 
 | Page | FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Home page | **171,981** | 8,430 | 32,079 | 29,283 | **164,653** | 36,091 |
-| Product list | **57,443** | 851 | 6,167 | 1,929 | 35,044 | 13,049 |
-| Product page | **119,511** | 1,481 | 13,171 | 3,722 | 102,790 | 32,175 |
-| Search | **101,077** | 1,412 | 11,146 | 3,239 | 79,564 | 26,927 |
-| JSON API | **169,760** | 6,717 | 24,814 | 39,999 | **169,373** | **170,573** |
-| 500-row table | **14,345** | 186 | 1,157 | 1,233 | **14,137** | 10,686 |
-| Prime sieve (heavy compute) | 842<br>**native 81,994** | 1,047 | 2,754 | 1,815 | 73,737 | 31,923 |
-| Sales report (heavy compute) | 4,792<br>**native 106,695** | 1,487 | 9,787 | 3,589 | 92,004 | 32,953 |
-| Word count (heavy compute) | 1,263<br>**native 5,632** | 452 | 591 | 555 | **5,886** | 5,172 |
+| Home page | **172,092** | 8,430 | 32,079 | 29,283 | **164,653** | 36,091 |
+| Product list | **54,810** | 851 | 6,167 | 1,929 | 35,044 | 13,049 |
+| Product page | **117,041** | 1,481 | 13,171 | 3,722 | 102,790 | 32,175 |
+| Search | **102,570** | 1,412 | 11,146 | 3,239 | 79,564 | 26,927 |
+| JSON API | **167,382** | 6,717 | 24,814 | 39,999 | **169,373** | **170,573** |
+| 500-row table | **15,029** | 186 | 1,157 | 1,233 | 14,137 | 10,686 |
+| Prime sieve (heavy compute) | 1,826<br>**native 80,090** | 1,047 | 2,754 | 1,815 | 73,737 | 31,923 |
+| Sales report (heavy compute) | 6,443<br>**native 104,026** | 1,487 | 9,787 | 3,589 | 92,004 | 32,953 |
+| Word count (heavy compute) | 1,397<br>native 5,494 | 452 | 591 | 555 | **5,886** | 5,172 |
 
 Bold marks the best figure in a row and every figure within 5% of it.
 
@@ -87,7 +87,7 @@ scripts/clean.sh --keep-installs  # keep node_modules/, FSR's fetched types and 
 
 Rust targets go through `cargo clean`, the cold build directories under `runs/` included. Node build output, generated FSR files and `runs/` are removed. Nothing outside the arena is touched: Cargo's registry, npm's cache and the rustc wrapper's store are shared with other projects.
 
-`build` generates the FSR app with `fsr build app` before cargo compiles it. `size` packs its deploy tree with `fsr bundle`. Both run `$FSR`, else `fsr` from `PATH`, which has to match the FSR crates in `apps/fsr/Cargo.toml`. Build one from the checkout the patch block points at:
+`build` generates the FSR app with `fsr build app` before cargo compiles it. `size` packs its deploy tree with `fsr bundle`. Both run `$FSR`, else `fsr` from `PATH`, which has to match the FSR crates in `apps/fsr/Cargo.toml`. Build one from the snapfire checkout the FSR crates come from:
 
 ```sh
 cargo build --release -p snapfire_fsr_cli --bin fsr --manifest-path ../snapfire/fsr/Cargo.toml
