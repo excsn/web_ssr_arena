@@ -1,0 +1,40 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Upstream", "version": "1.0.0" },
+  "paths": {
+    "/api/products": {
+      "get": {
+        "operationId": "listProducts",
+        "responses": {
+          "200": {
+            "description": "the catalog",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Catalog" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Summary": {
+        "type": "object",
+        "required": ["slug", "name", "priceCents", "rating", "inStock"],
+        "properties": {
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "priceCents": { "type": "integer", "format": "int64" },
+          "rating": { "type": "number" },
+          "inStock": { "type": "boolean" }
+        }
+      },
+      "Catalog": {
+        "type": "object",
+        "required": ["count", "products"],
+        "properties": {
+          "count": { "type": "integer", "format": "int64" },
+          "products": { "type": "array", "items": { "$ref": "#/components/schemas/Summary" } }
+        }
+      }
+    }
+  }
+}

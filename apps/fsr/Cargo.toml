@@ -9,7 +9,7 @@ publish = false
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 snapfire_fsr_core = "0"
-snapfire_fsr_host = "0"
+snapfire_fsr_host = { version = "0", features = ["http"] }
 snapfire_fsr_macros = "0"
 snapfire_fsr_runtime = "0"
 snapfire_fsr_service = "0"
@@ -17,3 +17,4 @@ tokio = { version = "1", features = ["full"] }
 
 [profile.release]
 debug = true
+
