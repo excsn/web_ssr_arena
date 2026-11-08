@@ -1,4 +1,4 @@
-//! `matrix <label> <url> <seconds> <levels> -- <server command…>`: per concurrency level in `levels` (comma separated), a fresh server, the time to its first 200, a load run, then the server stopped for its peak RSS and CPU time. One JSON line per level, to stdout and `results/<label>.jsonl`.
+//! `matrix <label> <url> <seconds> <levels> -- <server command…>`: per concurrency level in `levels` (comma separated), a fresh server, the time to its first 200, a load run, then the server stopped for its peak RSS and CPU time. One JSON line per level, to stdout and `results/<label>.jsonl`. `LOAD_CLIENT` picks the load client: hyper, fibre, fibre-sync or fibre-h2c, hyper by default.
 
 use std::fs::{self, File, OpenOptions};
 use std::io::{Read, Write};
@@ -65,6 +65,10 @@ async fn main() {
   let seconds: u64 = args[3].parse().expect("seconds");
   let levels: Vec<usize> = args[4].split(',').map(|c| c.parse().expect("a concurrency")).collect();
   let command = &args[split + 1..];
+  let client = load::Client::from_env().unwrap_or_else(|why| {
+    eprintln!("{why}");
+    std::process::exit(2);
+  });
   if command.is_empty() {
     eprintln!("no server command after --");
     std::process::exit(2);
@@ -84,7 +88,7 @@ async fn main() {
     let cold_ms = first_200(url, started).await;
     let measured = Instant::now();
     let run = match cold_ms {
-      Some(_) => load::run(url, c, seconds).await,
+      Some(_) => load::run_with(client, url, c, seconds).await,
       None => Err(format!("no 200 from {url} within {}s", FIRST_200_LIMIT.as_secs())),
     };
     let wall = measured.elapsed().as_secs_f64();
@@ -99,7 +103,7 @@ async fn main() {
     for why in &run.errors {
       eprintln!("c={c}: {why}");
     }
-    let mut row = json!({ "label": label, "c": c, "cold_ms": cold_ms });
+    let mut row = json!({ "label": label, "client": client.name(), "c": c, "cold_ms": cold_ms });
     row.as_object_mut().unwrap().extend(run.json().as_object().unwrap().clone());
     row["peak_rss_mb"] = json!(peak_rss_mb);
     row["cpu_pct"] = json!((100.0 * cpu_s / wall).round());

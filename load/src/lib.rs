@@ -1,4 +1,6 @@
-//! An HTTP/1.1 load client whose every worker holds one connection and sends the next request the moment the last response's body is read, opening a new connection only when its own one fails.
+//! An HTTP load client whose every worker sends the next request the moment the last response's body is read.
+//!
+//! The `hyper` client gives each worker one HTTP/1.1 connection of its own and opens a new one only when that one fails. The `fibre` clients send through one fibre_http pool sized to the concurrency: `fibre` from tokio tasks, `fibre-sync` from one blocking thread per worker and `fibre-h2c` over HTTP/2 without TLS.
 
 use std::time::{Duration, Instant};
 
@@ -11,6 +13,43 @@ use serde_json::{Value, json};
 use tokio::net::TcpStream;
 
 const ERRORS_KEPT: usize = 5;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Client {
+  Hyper,
+  Fibre,
+  FibreSync,
+  FibreH2c,
+}
+
+impl Client {
+  pub fn parse(name: &str) -> Result<Client, String> {
+    match name {
+      "hyper" => Ok(Client::Hyper),
+      "fibre" => Ok(Client::Fibre),
+      "fibre-sync" => Ok(Client::FibreSync),
+      "fibre-h2c" => Ok(Client::FibreH2c),
+      other => Err(format!("unknown client {other}: hyper, fibre, fibre-sync or fibre-h2c")),
+    }
+  }
+
+  /// The client named by `LOAD_CLIENT`, hyper when unset.
+  pub fn from_env() -> Result<Client, String> {
+    match std::env::var("LOAD_CLIENT") {
+      Ok(name) => Client::parse(&name),
+      Err(_) => Ok(Client::Hyper),
+    }
+  }
+
+  pub fn name(self) -> &'static str {
+    match self {
+      Client::Hyper => "hyper",
+      Client::Fibre => "fibre",
+      Client::FibreSync => "fibre-sync",
+      Client::FibreH2c => "fibre-h2c",
+    }
+  }
+}
 
 #[derive(Default)]
 struct Tally {
@@ -150,20 +189,104 @@ async fn worker(target: &Target, deadline: Instant) -> Tally {
   tally
 }
 
-/// `concurrency` workers against `url` for `seconds`.
+fn fibre_pool(concurrency: usize) -> fibre_http::Pool {
+  fibre_http::Pool::builder().max_per_host(concurrency).build()
+}
+
+fn record(tally: &mut Tally, started: Instant, result: Result<(bool, usize), fibre_http::Error>) {
+  match result {
+    Ok((ok, _)) => {
+      if !ok {
+        tally.non2xx += 1;
+      }
+      tally.latencies.push(started.elapsed().as_micros() as u64);
+    }
+    Err(e) => tally.fail(e.to_string()),
+  }
+}
+
+async fn fibre_worker(client: fibre_http::AsyncClient, url: std::sync::Arc<str>, deadline: Instant) -> Tally {
+  let mut tally = Tally { latencies: Vec::with_capacity(1 << 16), ..Tally::default() };
+  while Instant::now() < deadline {
+    let started = Instant::now();
+    let result = async {
+      let response = client.get(&*url).send().await?;
+      let ok = response.status().is_success();
+      Ok((ok, response.bytes().await?.len()))
+    }
+    .await;
+    record(&mut tally, started, result);
+  }
+  tally
+}
+
+fn fibre_sync_worker(client: fibre_http::SyncClient, url: &str, deadline: Instant) -> Tally {
+  let mut tally = Tally { latencies: Vec::with_capacity(1 << 16), ..Tally::default() };
+  while Instant::now() < deadline {
+    let started = Instant::now();
+    let result = client.get(url).send().and_then(|response| {
+      let ok = response.status().is_success();
+      Ok((ok, response.bytes()?.len()))
+    });
+    record(&mut tally, started, result);
+  }
+  tally
+}
+
+/// `concurrency` hyper workers against `url` for `seconds`.
 pub async fn run(url: &str, concurrency: usize, seconds: u64) -> Result<Run, String> {
-  let target = std::sync::Arc::new(target(url)?);
+  run_with(Client::Hyper, url, concurrency, seconds).await
+}
+
+/// `concurrency` workers of `client` against `url` for `seconds`.
+pub async fn run_with(client: Client, url: &str, concurrency: usize, seconds: u64) -> Result<Run, String> {
   let deadline = Instant::now() + Duration::from_secs(seconds);
   let start = Instant::now();
-  let workers: Vec<_> = (0..concurrency)
-    .map(|_| {
-      let target = target.clone();
-      tokio::spawn(async move { worker(&target, deadline).await })
-    })
-    .collect();
   let mut all = Tally::default();
-  for worker in workers {
-    all.absorb(worker.await.map_err(|e| format!("a worker: {e}"))?);
+  match client {
+    Client::Hyper => {
+      let target = std::sync::Arc::new(target(url)?);
+      let workers: Vec<_> = (0..concurrency)
+        .map(|_| {
+          let target = target.clone();
+          tokio::spawn(async move { worker(&target, deadline).await })
+        })
+        .collect();
+      for worker in workers {
+        all.absorb(worker.await.map_err(|e| format!("a worker: {e}"))?);
+      }
+    }
+    Client::Fibre | Client::FibreH2c => {
+      let pool = fibre_pool(concurrency);
+      let mut builder = fibre_http::AsyncClient::builder().pool(&pool);
+      if client == Client::FibreH2c {
+        builder = builder.http2_prior_knowledge();
+      }
+      let fibre = builder.build_async().map_err(|e| e.to_string())?;
+      let url: std::sync::Arc<str> = url.into();
+      let workers: Vec<_> = (0..concurrency).map(|_| tokio::spawn(fibre_worker(fibre.clone(), url.clone(), deadline))).collect();
+      for worker in workers {
+        all.absorb(worker.await.map_err(|e| format!("a worker: {e}"))?);
+      }
+      all.connections = pool.connections_opened() as u64;
+    }
+    Client::FibreSync => {
+      let pool = fibre_pool(concurrency);
+      let fibre = fibre_http::SyncClient::builder().pool(&pool).build_sync().map_err(|e| e.to_string())?;
+      let url = url.to_owned();
+      let tallies = tokio::task::spawn_blocking(move || {
+        std::thread::scope(|scope| {
+          let threads: Vec<_> = (0..concurrency).map(|_| scope.spawn(|| fibre_sync_worker(fibre.clone(), &url, deadline))).collect();
+          threads.into_iter().map(|t| t.join().expect("a worker")).collect::<Vec<_>>()
+        })
+      })
+      .await
+      .map_err(|e| format!("the workers: {e}"))?;
+      for tally in tallies {
+        all.absorb(tally);
+      }
+      all.connections = pool.connections_opened() as u64;
+    }
   }
   let wall_s = start.elapsed().as_secs_f64();
   all.latencies.sort_unstable();
