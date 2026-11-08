@@ -140,7 +140,7 @@
           "wasm_gz": 0
         }
       },
-      "version": "snapfire_fsr_host 0.23.0 at 907014e6+dirty.759746d9"
+      "version": "snapfire_fsr_host 0.23.0+dirty.759746d9"
     },
     {
       "app": "nextjs",

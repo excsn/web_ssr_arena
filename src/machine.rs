@@ -1,6 +1,5 @@
 //! The machine state a run records beside its numbers.
 
-use std::path::Path;
 use std::process::Command;
 use std::time::{SystemTime, UNIX_EPOCH};
 
@@ -32,41 +31,6 @@ pub fn power_mode() -> Option<String> {
 
 pub fn load_average() -> Option<f64> {
   output("sysctl", &["-n", "vm.loadavg"])?.split_whitespace().find_map(|field| field.parse().ok())
-}
-
-/// The commit `dir` is at. A tree with changes adds `+dirty.` and a hash of the changes and of every untracked file, so two different trees on one commit read apart.
-pub fn commit(dir: &Path) -> Option<String> {
-  let at = |args: &[&str]| Command::new("git").arg("-C").arg(dir).args(args).output().ok().filter(|o| o.status.success()).map(|o| o.stdout);
-  let head = String::from_utf8_lossy(&at(&["rev-parse", "--short=8", "HEAD"])?).trim().to_owned();
-  if at(&["status", "--porcelain", "--", "."]).is_none_or(|s| s.is_empty()) {
-    return Some(head);
-  }
-  let mut hash = Fnv::default();
-  hash.write(&at(&["diff", "HEAD", "--binary", "--", "."])?);
-  let untracked = at(&["ls-files", "--others", "--exclude-standard", "-z", "--", "."])?;
-  for name in untracked.split(|b| *b == 0).filter(|n| !n.is_empty()) {
-    hash.write(name);
-    hash.write(&std::fs::read(dir.join(String::from_utf8_lossy(name).as_ref())).unwrap_or_default());
-  }
-  Some(format!("{head}+dirty.{:08x}", hash.0 >> 32))
-}
-
-/// FNV-1a, 64 bits: the same hash on every build, which `DefaultHasher` does not promise.
-struct Fnv(u64);
-
-impl Default for Fnv {
-  fn default() -> Self {
-    Self(0xcbf2_9ce4_8422_2325)
-  }
-}
-
-impl Fnv {
-  fn write(&mut self, bytes: &[u8]) {
-    for b in bytes {
-      self.0 = (self.0 ^ u64::from(*b)).wrapping_mul(0x0100_0000_01b3);
-    }
-    self.0 = (self.0 ^ 0xff).wrapping_mul(0x0100_0000_01b3);
-  }
 }
 
 pub fn output(program: &str, args: &[&str]) -> Option<String> {

@@ -246,8 +246,7 @@ impl App {
       Kind::Fsr => {
         let lock = std::fs::read_to_string(self.dir().join("Cargo.lock")).unwrap_or_default();
         let host = locked(&lock, "snapfire_fsr_host").unwrap_or_else(|| "?".to_owned());
-        let at = crate::machine::commit(&root().join("../snapfire/fsr")).map(|c| format!(" at {c}")).unwrap_or_default();
-        format!("snapfire_fsr_host {host}{at}")
+        format!("snapfire_fsr_host {host}")
       }
       Kind::Leptos => {
         let lock = std::fs::read_to_string(self.dir().join("Cargo.lock")).unwrap_or_default();
