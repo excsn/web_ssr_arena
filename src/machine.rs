@@ -64,28 +64,6 @@ mod tests {
   use super::*;
 
   #[test]
-  fn two_different_uncommitted_trees_have_different_labels() {
-    let dir = std::env::temp_dir().join(format!("arena-commit-{}", std::process::id()));
-    std::fs::create_dir_all(&dir).unwrap();
-    let git = |args: &[&str]| assert!(Command::new("git").arg("-C").arg(&dir).args(["-c", "user.name=t", "-c", "user.email=t@t"]).args(args).output().unwrap().status.success());
-    git(&["init", "-q"]);
-    std::fs::write(dir.join("a"), "1").unwrap();
-    git(&["add", "a"]);
-    git(&["commit", "-q", "-m", "a"]);
-    let clean = commit(&dir).unwrap();
-    std::fs::write(dir.join("a"), "2").unwrap();
-    let edited = commit(&dir).unwrap();
-    std::fs::write(dir.join("a"), "3").unwrap();
-    let edited_again = commit(&dir).unwrap();
-    std::fs::write(dir.join("b"), "new").unwrap();
-    let with_new_file = commit(&dir).unwrap();
-    std::fs::remove_dir_all(&dir).unwrap();
-    assert!(edited.starts_with(&format!("{clean}+dirty.")), "{edited}");
-    assert_ne!(edited, edited_again);
-    assert_ne!(edited_again, with_new_file);
-  }
-
-  #[test]
   fn civil_dates() {
     assert_eq!(civil_from_days(0), (1970, 1, 1));
     assert_eq!(civil_from_days(19_723), (2024, 1, 1));

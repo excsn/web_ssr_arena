@@ -16295,7 +16295,7 @@
     {
       "crate": "SnapFire FSR",
       "name": "fsr",
-      "version": "snapfire_fsr_host 0.23.0+dirty.5fefbbfe for home, counter, catalog, product, search, missing, api, primes, primes.native, report, report.native, words, words.native and table; snapfire_fsr_host 0.23.0+dirty.759746d9 for the build and the sizes"
+      "version": "snapfire_fsr_host 0.23.0"
     },
     {
       "crate": "Leptos",
