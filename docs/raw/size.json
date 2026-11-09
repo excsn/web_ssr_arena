@@ -3,14 +3,14 @@
   "records": [
     {
       "app": "fsr",
-      "at": "2026-11-07T20:17:35Z",
+      "at": "2026-11-09T16:15:20Z",
       "deploy": {
-        "binary_bytes": 23137088,
+        "binary_bytes": 25818816,
         "runtime": null,
         "runtime_bytes": null,
-        "stripped_binary_bytes": 17761352,
-        "tree_bytes": 26907245,
-        "tree_files": 458
+        "stripped_binary_bytes": 19768152,
+        "tree_bytes": 29592344,
+        "tree_files": 460
       },
       "pages": {
         "catalog": {
@@ -140,7 +140,7 @@
           "wasm_gz": 0
         }
       },
-      "version": "snapfire_fsr_host 0.23.0"
+      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
     },
     {
       "app": "nextjs",

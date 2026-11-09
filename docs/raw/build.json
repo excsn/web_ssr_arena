@@ -4,126 +4,126 @@
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-07T20:17:24Z",
-        "load": 23.3,
+        "at": "2026-11-09T16:15:01Z",
+        "load": 29.16,
         "power_mode": "high power"
       },
       "kind": "cold",
       "rep": 0,
-      "secs": 45.261064251,
+      "secs": 46.704423542,
       "start": {
-        "at": "2026-11-07T20:16:35Z",
-        "load": 14.28,
+        "at": "2026-11-09T16:13:45Z",
+        "load": 3.97,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.090834834,
+          "secs": 0.100109167,
           "step": "fsr build app"
         },
         {
-          "secs": 44.66283225,
+          "secs": 46.53030525,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.507397167,
+          "secs": 0.074009125,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.23.0"
+      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0"
     },
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-07T20:17:24Z",
-        "load": 23.3,
+        "at": "2026-11-09T16:15:01Z",
+        "load": 29.16,
         "power_mode": "high power"
       },
       "kind": "warm",
       "rep": 1,
-      "secs": 1.073946626,
+      "secs": 26.118970417,
       "start": {
-        "at": "2026-11-07T20:16:35Z",
-        "load": 14.28,
+        "at": "2026-11-09T16:13:45Z",
+        "load": 3.97,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.239339959,
+          "secs": 0.226190083,
           "step": "fsr build app"
         },
         {
-          "secs": 0.331974667,
+          "secs": 25.8271145,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.502632,
+          "secs": 0.065665834,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.23.0"
+      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
     },
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-07T20:17:24Z",
-        "load": 23.3,
+        "at": "2026-11-09T16:15:01Z",
+        "load": 29.16,
         "power_mode": "high power"
       },
       "kind": "warm",
       "rep": 2,
-      "secs": 0.739958958,
+      "secs": 0.742935833,
       "start": {
-        "at": "2026-11-07T20:16:35Z",
-        "load": 14.28,
+        "at": "2026-11-09T16:13:45Z",
+        "load": 3.97,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.0915535,
+          "secs": 0.224875333,
           "step": "fsr build app"
         },
         {
-          "secs": 0.151395958,
+          "secs": 0.453703,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.4970095,
+          "secs": 0.0643575,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.23.0"
+      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
     },
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-07T20:17:24Z",
-        "load": 23.3,
+        "at": "2026-11-09T16:15:01Z",
+        "load": 29.16,
         "power_mode": "high power"
       },
       "kind": "warm",
       "rep": 3,
-      "secs": 0.750108416,
+      "secs": 0.301862332,
       "start": {
-        "at": "2026-11-07T20:16:35Z",
-        "load": 14.28,
+        "at": "2026-11-09T16:13:45Z",
+        "load": 3.97,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.097388291,
+          "secs": 0.091713333,
           "step": "fsr build app"
         },
         {
-          "secs": 0.149975833,
+          "secs": 0.145856083,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.502744292,
+          "secs": 0.064292916,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.23.0"
+      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
     },
     {
       "app": "nextjs",
