@@ -7,7 +7,7 @@ Higher is better for requests per second. Lower is better for latency, memory, b
 Machine: Apple M4 Pro (14 cores).
 
 - Dioxus: dioxus 0.7.10
-- SnapFire FSR: snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396 for home, counter, catalog, product, search, missing, api, primes, primes.native, report, report.native, words, words.native, table, the build and the sizes; snapfire_fsr_host 0.25.0 at 3f3414d0 for the build
+- SnapFire FSR: snapfire_fsr_host 0.25.1
 - Leptos: leptos 0.8.23
 - Next.js: next 16.4.4, react 19.3.1
 - Nuxt: nuxt 4.6.4, vue 3.5.44

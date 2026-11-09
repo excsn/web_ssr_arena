@@ -17041,7 +17041,7 @@
       "rps": 42083.25163756169,
       "rss_mb": 28.9375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17059,7 +17059,7 @@
       "rps": 147570.19766555767,
       "rss_mb": 28.96875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17077,7 +17077,7 @@
       "rps": 175377.039094336,
       "rss_mb": 30.65625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17095,7 +17095,7 @@
       "rps": 173818.64067454977,
       "rss_mb": 31.484375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17113,7 +17113,7 @@
       "rps": 174777.57523938935,
       "rss_mb": 30.6875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17131,7 +17131,7 @@
       "rps": 175056.03753641638,
       "rss_mb": 33.734375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17149,7 +17149,7 @@
       "rps": 47003.59788143925,
       "rss_mb": 33.734375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17167,7 +17167,7 @@
       "rps": 160717.04177643894,
       "rss_mb": 33.734375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17185,7 +17185,7 @@
       "rps": 180010.39397100476,
       "rss_mb": 33.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17203,7 +17203,7 @@
       "rps": 176212.1813536125,
       "rss_mb": 33.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17221,7 +17221,7 @@
       "rps": 175530.854456166,
       "rss_mb": 33.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17239,7 +17239,7 @@
       "rps": 174378.37762716852,
       "rss_mb": 33.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17257,7 +17257,7 @@
       "rps": 6870.397143971397,
       "rss_mb": 42.453125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17275,7 +17275,7 @@
       "rps": 38345.630695971326,
       "rss_mb": 42.59375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17293,7 +17293,7 @@
       "rps": 55334.23511903485,
       "rss_mb": 43.859375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17311,7 +17311,7 @@
       "rps": 56509.4589645873,
       "rss_mb": 44.59375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17329,7 +17329,7 @@
       "rps": 56339.05648359992,
       "rss_mb": 44.875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17347,7 +17347,7 @@
       "rps": 54600.487971327806,
       "rss_mb": 45.34375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17365,7 +17365,7 @@
       "rps": 15154.6857506302,
       "rss_mb": 45.75,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17383,7 +17383,7 @@
       "rps": 72066.1739324384,
       "rss_mb": 45.796875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17401,7 +17401,7 @@
       "rps": 121311.38886216965,
       "rss_mb": 45.84375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17419,7 +17419,7 @@
       "rps": 120798.8846475744,
       "rss_mb": 45.84375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17437,7 +17437,7 @@
       "rps": 120761.4221368564,
       "rss_mb": 45.84375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17455,7 +17455,7 @@
       "rps": 123330.53114676975,
       "rss_mb": 60.875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17473,7 +17473,7 @@
       "rps": 12397.630359504503,
       "rss_mb": 61.078125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17491,7 +17491,7 @@
       "rps": 61380.64426838205,
       "rss_mb": 61.078125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17509,7 +17509,7 @@
       "rps": 104670.54640973824,
       "rss_mb": 61.171875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17527,7 +17527,7 @@
       "rps": 106161.61756166845,
       "rss_mb": 61.34375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17545,7 +17545,7 @@
       "rps": 107178.9566963475,
       "rss_mb": 61.359375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17563,7 +17563,7 @@
       "rps": 107395.11931851032,
       "rss_mb": 61.390625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17581,7 +17581,7 @@
       "rps": 19353.510496231276,
       "rss_mb": 61.390625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17599,7 +17599,7 @@
       "rps": 83932.70058030797,
       "rss_mb": 61.390625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17617,7 +17617,7 @@
       "rps": 138441.58424104983,
       "rss_mb": 61.40625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17635,7 +17635,7 @@
       "rps": 143285.33437524593,
       "rss_mb": 61.40625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17653,7 +17653,7 @@
       "rps": 146382.89309779365,
       "rss_mb": 61.40625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17671,7 +17671,7 @@
       "rps": 150335.78713041492,
       "rss_mb": 73.46875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17689,7 +17689,7 @@
       "rps": 22506.293480074015,
       "rss_mb": 73.53125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17707,7 +17707,7 @@
       "rps": 107998.49500098493,
       "rss_mb": 73.53125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17725,7 +17725,7 @@
       "rps": 163537.03486387804,
       "rss_mb": 73.53125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17743,7 +17743,7 @@
       "rps": 167356.42632798658,
       "rss_mb": 73.546875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17761,7 +17761,7 @@
       "rps": 170263.1533351218,
       "rss_mb": 73.546875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17779,7 +17779,7 @@
       "rps": 172062.76850506835,
       "rss_mb": 74.21875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17797,7 +17797,7 @@
       "rps": 202.42730920345974,
       "rss_mb": 146.515625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17815,7 +17815,7 @@
       "rps": 1319.4032122125839,
       "rss_mb": 146.515625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17833,7 +17833,7 @@
       "rps": 1952.5165194408776,
       "rss_mb": 146.84375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17851,7 +17851,7 @@
       "rps": 1919.1044749967114,
       "rss_mb": 146.84375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17869,7 +17869,7 @@
       "rps": 1891.5820635637408,
       "rss_mb": 146.84375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17887,7 +17887,7 @@
       "rps": 1878.4053109450879,
       "rss_mb": 146.875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17905,7 +17905,7 @@
       "rps": 8897.107358869625,
       "rss_mb": 143.0,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17923,7 +17923,7 @@
       "rps": 48132.58490688262,
       "rss_mb": 136.109375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17941,7 +17941,7 @@
       "rps": 82181.77319450228,
       "rss_mb": 118.125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17959,7 +17959,7 @@
       "rps": 83055.12626815452,
       "rss_mb": 115.984375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17977,7 +17977,7 @@
       "rps": 83180.0347121682,
       "rss_mb": 115.984375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -17995,7 +17995,7 @@
       "rps": 83023.42669298986,
       "rss_mb": 121.609375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18013,7 +18013,7 @@
       "rps": 615.5801527109484,
       "rss_mb": 121.6875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18031,7 +18031,7 @@
       "rps": 4440.699276305136,
       "rss_mb": 121.703125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18049,7 +18049,7 @@
       "rps": 5909.592249651498,
       "rss_mb": 106.625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18067,7 +18067,7 @@
       "rps": 6085.359003486104,
       "rss_mb": 106.765625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18085,7 +18085,7 @@
       "rps": 6242.865540166898,
       "rss_mb": 107.15625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18103,7 +18103,7 @@
       "rps": 6167.9159968051135,
       "rss_mb": 113.578125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18121,7 +18121,7 @@
       "rps": 12049.902869880065,
       "rss_mb": 113.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18139,7 +18139,7 @@
       "rps": 61110.87175776361,
       "rss_mb": 113.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18157,7 +18157,7 @@
       "rps": 108791.38449296888,
       "rss_mb": 113.90625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18175,7 +18175,7 @@
       "rps": 110814.55116357881,
       "rss_mb": 114.140625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18193,7 +18193,7 @@
       "rps": 110928.28320396076,
       "rss_mb": 114.171875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18211,7 +18211,7 @@
       "rps": 112509.12005140036,
       "rss_mb": 114.90625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18229,7 +18229,7 @@
       "rps": 137.87567528398802,
       "rss_mb": 115.015625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18247,7 +18247,7 @@
       "rps": 950.3516670760484,
       "rss_mb": 115.15625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18265,7 +18265,7 @@
       "rps": 1476.0671801175317,
       "rss_mb": 115.203125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18283,7 +18283,7 @@
       "rps": 1454.6205908462969,
       "rss_mb": 115.203125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18301,7 +18301,7 @@
       "rps": 1450.455751843397,
       "rss_mb": 115.21875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18319,7 +18319,7 @@
       "rps": 1449.3780530806323,
       "rss_mb": 115.21875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18337,7 +18337,7 @@
       "rps": 488.15465243422295,
       "rss_mb": 115.21875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18355,7 +18355,7 @@
       "rps": 3521.3175488032543,
       "rss_mb": 115.234375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18373,7 +18373,7 @@
       "rps": 5732.608762382495,
       "rss_mb": 115.234375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18391,7 +18391,7 @@
       "rps": 5768.424602979726,
       "rss_mb": 115.234375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18409,7 +18409,7 @@
       "rps": 5729.084035590957,
       "rss_mb": 115.234375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18427,7 +18427,7 @@
       "rps": 5772.509119768438,
       "rss_mb": 115.3125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18445,7 +18445,7 @@
       "rps": 1496.5643069412795,
       "rss_mb": 119.984375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18463,7 +18463,7 @@
       "rps": 10678.509323690776,
       "rss_mb": 119.984375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18481,7 +18481,7 @@
       "rps": 16201.655214690993,
       "rss_mb": 120.203125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18499,7 +18499,7 @@
       "rps": 15815.880227888176,
       "rss_mb": 120.40625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18517,7 +18517,7 @@
       "rps": 15514.844101348783,
       "rss_mb": 121.8125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18535,7 +18535,7 @@
       "rps": 15724.219407104489,
       "rss_mb": 122.625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18553,7 +18553,7 @@
       "rps": 42522.45625229332,
       "rss_mb": 29.21875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18571,7 +18571,7 @@
       "rps": 147157.75781157703,
       "rss_mb": 29.21875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18589,7 +18589,7 @@
       "rps": 173785.6022581749,
       "rss_mb": 30.734375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18607,7 +18607,7 @@
       "rps": 173421.1891491712,
       "rss_mb": 31.609375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18625,7 +18625,7 @@
       "rps": 171550.9607234184,
       "rss_mb": 30.890625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18643,7 +18643,7 @@
       "rps": 168635.62987748298,
       "rss_mb": 33.90625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18661,7 +18661,7 @@
       "rps": 42012.07913274562,
       "rss_mb": 33.90625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18679,7 +18679,7 @@
       "rps": 147199.21020632677,
       "rss_mb": 33.90625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18697,7 +18697,7 @@
       "rps": 174002.3770816661,
       "rss_mb": 33.90625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18715,7 +18715,7 @@
       "rps": 172775.3594198864,
       "rss_mb": 33.90625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18733,7 +18733,7 @@
       "rps": 171222.21589865547,
       "rss_mb": 33.90625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18751,7 +18751,7 @@
       "rps": 169264.9449257429,
       "rss_mb": 34.0,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18769,7 +18769,7 @@
       "rps": 7003.869270523576,
       "rss_mb": 42.546875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18787,7 +18787,7 @@
       "rps": 37081.058628122766,
       "rss_mb": 42.59375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18805,7 +18805,7 @@
       "rps": 60380.003216318815,
       "rss_mb": 44.390625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18823,7 +18823,7 @@
       "rps": 59851.30760220223,
       "rss_mb": 44.515625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18841,7 +18841,7 @@
       "rps": 59582.70511457137,
       "rss_mb": 44.71875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18859,7 +18859,7 @@
       "rps": 60244.10834057184,
       "rss_mb": 45.21875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18877,7 +18877,7 @@
       "rps": 15578.641747483538,
       "rss_mb": 45.40625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18895,7 +18895,7 @@
       "rps": 71221.9059517994,
       "rss_mb": 45.40625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18913,7 +18913,7 @@
       "rps": 123834.34334829434,
       "rss_mb": 45.5625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18931,7 +18931,7 @@
       "rps": 124484.52231306028,
       "rss_mb": 45.671875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18949,7 +18949,7 @@
       "rps": 124896.80244628558,
       "rss_mb": 45.6875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18967,7 +18967,7 @@
       "rps": 126934.05091743443,
       "rss_mb": 45.6875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -18985,7 +18985,7 @@
       "rps": 12459.424646854557,
       "rss_mb": 45.921875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19003,7 +19003,7 @@
       "rps": 60965.988485637004,
       "rss_mb": 45.921875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19021,7 +19021,7 @@
       "rps": 105674.97550434894,
       "rss_mb": 46.09375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19039,7 +19039,7 @@
       "rps": 105764.60468273718,
       "rss_mb": 46.09375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19057,7 +19057,7 @@
       "rps": 106410.23069826656,
       "rss_mb": 46.28125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19075,7 +19075,7 @@
       "rps": 107515.44198044427,
       "rss_mb": 46.28125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19093,7 +19093,7 @@
       "rps": 19424.810245933004,
       "rss_mb": 46.296875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19111,7 +19111,7 @@
       "rps": 84180.67963605028,
       "rss_mb": 46.296875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19129,7 +19129,7 @@
       "rps": 140363.7441725101,
       "rss_mb": 46.296875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19147,7 +19147,7 @@
       "rps": 145563.85814749295,
       "rss_mb": 46.296875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19165,7 +19165,7 @@
       "rps": 149186.79763459173,
       "rss_mb": 46.296875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19183,7 +19183,7 @@
       "rps": 153180.3839932487,
       "rss_mb": 46.34375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19201,7 +19201,7 @@
       "rps": 22498.067297257785,
       "rss_mb": 46.5,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19219,7 +19219,7 @@
       "rps": 107306.62131056344,
       "rss_mb": 46.5,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19237,7 +19237,7 @@
       "rps": 164642.13794686904,
       "rss_mb": 46.5,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19255,7 +19255,7 @@
       "rps": 165701.5185746963,
       "rss_mb": 46.515625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19273,7 +19273,7 @@
       "rps": 167076.42095968852,
       "rss_mb": 46.515625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19291,7 +19291,7 @@
       "rps": 170045.6697469325,
       "rss_mb": 46.6875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19309,7 +19309,7 @@
       "rps": 204.08576044451917,
       "rss_mb": 113.609375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19327,7 +19327,7 @@
       "rps": 1303.2501179955693,
       "rss_mb": 111.3125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19345,7 +19345,7 @@
       "rps": 1918.7679950017587,
       "rss_mb": 121.703125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19363,7 +19363,7 @@
       "rps": 1893.6409488145139,
       "rss_mb": 121.71875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19381,7 +19381,7 @@
       "rps": 1872.1586510793172,
       "rss_mb": 121.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19399,7 +19399,7 @@
       "rps": 1853.6719515986204,
       "rss_mb": 121.828125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19417,7 +19417,7 @@
       "rps": 9112.256026354782,
       "rss_mb": 115.84375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19435,7 +19435,7 @@
       "rps": 48780.314045000334,
       "rss_mb": 108.953125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19453,7 +19453,7 @@
       "rps": 84004.22415087963,
       "rss_mb": 93.03125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19471,7 +19471,7 @@
       "rps": 83974.85590629163,
       "rss_mb": 93.03125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19489,7 +19489,7 @@
       "rps": 84097.01108406068,
       "rss_mb": 93.03125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19507,7 +19507,7 @@
       "rps": 84591.29117084455,
       "rss_mb": 93.1875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19525,7 +19525,7 @@
       "rps": 620.6486490823966,
       "rss_mb": 93.25,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19543,7 +19543,7 @@
       "rps": 4379.556625277025,
       "rss_mb": 93.28125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19561,7 +19561,7 @@
       "rps": 6656.595709198186,
       "rss_mb": 91.0,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19579,7 +19579,7 @@
       "rps": 6604.5813245330855,
       "rss_mb": 91.015625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19597,7 +19597,7 @@
       "rps": 6594.285531625158,
       "rss_mb": 91.015625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19615,7 +19615,7 @@
       "rps": 6626.201135617431,
       "rss_mb": 91.015625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19633,7 +19633,7 @@
       "rps": 12306.742327582515,
       "rss_mb": 91.171875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19651,7 +19651,7 @@
       "rps": 61883.32076955074,
       "rss_mb": 91.171875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19669,7 +19669,7 @@
       "rps": 110579.18294345101,
       "rss_mb": 91.234375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19687,7 +19687,7 @@
       "rps": 110722.06903062202,
       "rss_mb": 91.234375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19705,7 +19705,7 @@
       "rps": 110890.45107902431,
       "rss_mb": 91.234375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19723,7 +19723,7 @@
       "rps": 112319.9923386298,
       "rss_mb": 101.421875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19741,7 +19741,7 @@
       "rps": 141.44486361816928,
       "rss_mb": 101.46875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19759,7 +19759,7 @@
       "rps": 957.9847486605672,
       "rss_mb": 101.46875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19777,7 +19777,7 @@
       "rps": 1476.3331884129457,
       "rss_mb": 101.46875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19795,7 +19795,7 @@
       "rps": 1462.045093074008,
       "rss_mb": 101.46875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19813,7 +19813,7 @@
       "rps": 1457.906770542277,
       "rss_mb": 101.46875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19831,7 +19831,7 @@
       "rps": 1453.8084680068223,
       "rss_mb": 101.84375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19849,7 +19849,7 @@
       "rps": 516.0249098096092,
       "rss_mb": 101.859375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19867,7 +19867,7 @@
       "rps": 3755.384173957896,
       "rss_mb": 101.875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19885,7 +19885,7 @@
       "rps": 5829.0719232470565,
       "rss_mb": 101.890625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19903,7 +19903,7 @@
       "rps": 5745.9055971324115,
       "rss_mb": 101.890625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19921,7 +19921,7 @@
       "rps": 5755.698061906015,
       "rss_mb": 102.15625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19939,7 +19939,7 @@
       "rps": 5709.77450928063,
       "rss_mb": 102.265625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19957,7 +19957,7 @@
       "rps": 1511.6450517023704,
       "rss_mb": 106.953125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19975,7 +19975,7 @@
       "rps": 10863.74573882435,
       "rss_mb": 106.953125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -19993,7 +19993,7 @@
       "rps": 16129.22710845031,
       "rss_mb": 107.28125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20011,7 +20011,7 @@
       "rps": 15964.533432504633,
       "rss_mb": 107.28125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20029,7 +20029,7 @@
       "rps": 15942.105831998106,
       "rss_mb": 107.28125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20047,7 +20047,7 @@
       "rps": 15685.994966173143,
       "rss_mb": 107.671875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20065,7 +20065,7 @@
       "rps": 42822.30035758466,
       "rss_mb": 29.359375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20083,7 +20083,7 @@
       "rps": 147954.70635395552,
       "rss_mb": 29.359375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20101,7 +20101,7 @@
       "rps": 172746.06452490744,
       "rss_mb": 30.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20119,7 +20119,7 @@
       "rps": 172986.42897656254,
       "rss_mb": 31.6875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20137,7 +20137,7 @@
       "rps": 171013.77566048325,
       "rss_mb": 30.90625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20155,7 +20155,7 @@
       "rps": 170571.30976937298,
       "rss_mb": 33.9375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20173,7 +20173,7 @@
       "rps": 42403.012894414685,
       "rss_mb": 34.0,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20191,7 +20191,7 @@
       "rps": 148067.30717000194,
       "rss_mb": 34.0,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20209,7 +20209,7 @@
       "rps": 173550.62720284914,
       "rss_mb": 34.0,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20227,7 +20227,7 @@
       "rps": 172606.61379564556,
       "rss_mb": 34.0,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20245,7 +20245,7 @@
       "rps": 171468.19930453348,
       "rss_mb": 34.0,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20263,7 +20263,7 @@
       "rps": 169971.03558270255,
       "rss_mb": 34.078125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20281,7 +20281,7 @@
       "rps": 6972.100879733423,
       "rss_mb": 42.328125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20299,7 +20299,7 @@
       "rps": 37398.964950243964,
       "rss_mb": 42.421875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20317,7 +20317,7 @@
       "rps": 60122.5724202972,
       "rss_mb": 43.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20335,7 +20335,7 @@
       "rps": 59279.01192952961,
       "rss_mb": 44.09375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20353,7 +20353,7 @@
       "rps": 58857.91352680645,
       "rss_mb": 44.25,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20371,7 +20371,7 @@
       "rps": 57869.2637017641,
       "rss_mb": 45.046875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20389,7 +20389,7 @@
       "rps": 15515.370372518488,
       "rss_mb": 45.203125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20407,7 +20407,7 @@
       "rps": 71067.26144369284,
       "rss_mb": 45.21875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20425,7 +20425,7 @@
       "rps": 123389.94451371048,
       "rss_mb": 45.328125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20443,7 +20443,7 @@
       "rps": 123035.49243152647,
       "rss_mb": 45.359375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20461,7 +20461,7 @@
       "rps": 124143.51782738899,
       "rss_mb": 45.390625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20479,7 +20479,7 @@
       "rps": 124713.31324827857,
       "rss_mb": 45.484375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20497,7 +20497,7 @@
       "rps": 12460.306028110028,
       "rss_mb": 45.71875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20515,7 +20515,7 @@
       "rps": 60858.47434452196,
       "rss_mb": 45.71875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20533,7 +20533,7 @@
       "rps": 106250.4688006269,
       "rss_mb": 45.75,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20551,7 +20551,7 @@
       "rps": 105492.91667353052,
       "rss_mb": 45.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20569,7 +20569,7 @@
       "rps": 104092.78665808811,
       "rss_mb": 45.96875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20587,7 +20587,7 @@
       "rps": 107299.0019763313,
       "rss_mb": 45.96875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20605,7 +20605,7 @@
       "rps": 19446.411687610722,
       "rss_mb": 46.03125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20623,7 +20623,7 @@
       "rps": 84406.42309958285,
       "rss_mb": 46.03125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20641,7 +20641,7 @@
       "rps": 139629.21672612728,
       "rss_mb": 46.03125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20659,7 +20659,7 @@
       "rps": 144227.04103975324,
       "rss_mb": 46.03125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20677,7 +20677,7 @@
       "rps": 147682.23639662625,
       "rss_mb": 46.03125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20695,7 +20695,7 @@
       "rps": 153170.00520228484,
       "rss_mb": 46.15625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20713,7 +20713,7 @@
       "rps": 22537.375470017378,
       "rss_mb": 46.265625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20731,7 +20731,7 @@
       "rps": 107048.52817637878,
       "rss_mb": 46.265625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20749,7 +20749,7 @@
       "rps": 164125.76365579473,
       "rss_mb": 46.28125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20767,7 +20767,7 @@
       "rps": 165693.50556239267,
       "rss_mb": 46.296875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20785,7 +20785,7 @@
       "rps": 167587.07085255237,
       "rss_mb": 46.3125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20803,7 +20803,7 @@
       "rps": 170749.6978687105,
       "rss_mb": 46.53125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20821,7 +20821,7 @@
       "rps": 203.46004553355834,
       "rss_mb": 113.140625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20839,7 +20839,7 @@
       "rps": 1309.6145586411199,
       "rss_mb": 108.78125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20857,7 +20857,7 @@
       "rps": 1936.6166199300017,
       "rss_mb": 117.609375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20875,7 +20875,7 @@
       "rps": 1876.7939777520967,
       "rss_mb": 117.625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20893,7 +20893,7 @@
       "rps": 1868.1801361310918,
       "rss_mb": 117.625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20911,7 +20911,7 @@
       "rps": 1862.7656265695825,
       "rss_mb": 117.703125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20929,7 +20929,7 @@
       "rps": 8963.086280842812,
       "rss_mb": 113.921875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20947,7 +20947,7 @@
       "rps": 48523.30497366125,
       "rss_mb": 102.4375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20965,7 +20965,7 @@
       "rps": 84111.36178000903,
       "rss_mb": 89.171875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -20983,7 +20983,7 @@
       "rps": 82886.0975521654,
       "rss_mb": 89.328125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21001,7 +21001,7 @@
       "rps": 83665.62043985713,
       "rss_mb": 89.34375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21019,7 +21019,7 @@
       "rps": 84403.60199799227,
       "rss_mb": 89.359375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21037,7 +21037,7 @@
       "rps": 621.0795467768628,
       "rss_mb": 89.421875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21055,7 +21055,7 @@
       "rps": 4380.019308645276,
       "rss_mb": 87.140625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21073,7 +21073,7 @@
       "rps": 6596.20163691666,
       "rss_mb": 87.15625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21091,7 +21091,7 @@
       "rps": 6435.662100004233,
       "rss_mb": 87.15625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21109,7 +21109,7 @@
       "rps": 6541.465388993306,
       "rss_mb": 87.15625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21127,7 +21127,7 @@
       "rps": 6555.34945685929,
       "rss_mb": 87.15625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21145,7 +21145,7 @@
       "rps": 12465.656119177213,
       "rss_mb": 87.34375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21163,7 +21163,7 @@
       "rps": 62004.45555442416,
       "rss_mb": 87.34375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21181,7 +21181,7 @@
       "rps": 110027.4916749642,
       "rss_mb": 87.40625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21199,7 +21199,7 @@
       "rps": 110589.03915523004,
       "rss_mb": 87.4375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21217,7 +21217,7 @@
       "rps": 112199.20234248952,
       "rss_mb": 87.4375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21235,7 +21235,7 @@
       "rps": 113308.1735656597,
       "rss_mb": 87.578125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21253,7 +21253,7 @@
       "rps": 139.06981837266767,
       "rss_mb": 87.609375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21271,7 +21271,7 @@
       "rps": 961.1096234278533,
       "rss_mb": 87.609375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21289,7 +21289,7 @@
       "rps": 1465.2478125532268,
       "rss_mb": 87.609375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21307,7 +21307,7 @@
       "rps": 1431.9729036614206,
       "rss_mb": 87.609375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21325,7 +21325,7 @@
       "rps": 1443.5989734949221,
       "rss_mb": 87.609375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21343,7 +21343,7 @@
       "rps": 1425.6263971157123,
       "rss_mb": 87.875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21361,7 +21361,7 @@
       "rps": 520.5538095426517,
       "rss_mb": 87.875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21379,7 +21379,7 @@
       "rps": 3746.0855903854026,
       "rss_mb": 87.890625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21397,7 +21397,7 @@
       "rps": 5749.027567008751,
       "rss_mb": 87.890625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21415,7 +21415,7 @@
       "rps": 5735.149523204508,
       "rss_mb": 87.890625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21433,7 +21433,7 @@
       "rps": 5568.149455228146,
       "rss_mb": 87.921875,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21451,7 +21451,7 @@
       "rps": 5690.724889102654,
       "rss_mb": 88.125,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21469,7 +21469,7 @@
       "rps": 1500.1720217917937,
       "rss_mb": 92.734375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21487,7 +21487,7 @@
       "rps": 10776.256752950745,
       "rss_mb": 92.734375,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21505,7 +21505,7 @@
       "rps": 15978.539446312832,
       "rss_mb": 92.890625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21523,7 +21523,7 @@
       "rps": 15892.991468044274,
       "rss_mb": 92.890625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21541,7 +21541,7 @@
       "rps": 15698.09971908099,
       "rss_mb": 92.90625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     },
     {
       "app": "fsr",
@@ -21559,7 +21559,7 @@
       "rps": 15735.439096372731,
       "rss_mb": 93.015625,
       "unexpected_status": 0,
-      "version": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+      "version": "snapfire_fsr_host 0.25.1"
     }
   ],
   "reps": 3,
@@ -21916,7 +21916,7 @@
         "power_mode": "high power"
       },
       "versions": {
-        "fsr": "snapfire_fsr_host 0.25.0 at 3f3414d0+dirty.28068396"
+        "fsr": "snapfire_fsr_host 0.25.1"
       }
     }
   ],
