@@ -11,6 +11,10 @@ runs/
 .svelte-kit-cold/
 apps/sveltekit/build/
 apps/sveltekit/build-cold/
+apps/astro/dist/
+apps/astro/dist-cold/
+.astro/
+.astro-cold/
 .nuxt/
 .nuxt-cold/
 .output/

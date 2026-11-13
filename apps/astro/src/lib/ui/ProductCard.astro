@@ -1,0 +1,16 @@
+---
+import { price } from "@src/format";
+
+interface Props {
+  product: { slug: string; name: string; priceCents: number; rating: number; inStock: boolean };
+}
+
+const { product } = Astro.props;
+---
+
+<li class="card">
+  <a href={`/products/${product.slug}`}><h3>{product.name}</h3></a>
+  <p class="price">{price(product.priceCents)}</p>
+  <p class="rating">{product.rating.toFixed(1)} / 5</p>
+  {product.inStock ? <p class="stock">In stock</p> : <p class="stock out">Out of stock</p>}
+</li>

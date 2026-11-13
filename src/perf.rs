@@ -124,7 +124,7 @@ mod tests {
   #[test]
   fn the_native_forms_are_cells_of_their_own_for_fsr_only() {
     let plan = Plan { apps: APPS.iter().collect(), pages: PAGES.iter().collect(), levels: vec![1, 8, 32, 64, 128, 256], secs: 10, warmup_secs: 3, reps: 3 };
-    assert_eq!(plan.cells(), 6 * 11 * 6 * 3 + 3 * 6 * 3);
+    assert_eq!(plan.cells(), 7 * 11 * 6 * 3 + 3 * 6 * 3);
     let primes = crate::pages::by_id("primes").unwrap();
     assert_eq!(primes.variants(true), vec![("primes".to_owned(), "/compute/primes?n=50000"), ("primes.native".to_owned(), "/compute/native/primes?n=50000")]);
     assert_eq!(primes.variants(false).len(), 1);

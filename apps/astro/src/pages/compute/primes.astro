@@ -1,0 +1,11 @@
+---
+import Shell from "../../layouts/Shell.astro";
+import PrimesView from "@src/views/Primes.astro";
+import { primes } from "@src/compute";
+
+const n = Math.min(Math.max(Number(Astro.url.searchParams.get("n") ?? "50000") || 0, 10), 1000000);
+---
+
+<Shell>
+  <PrimesView result={primes(n)} />
+</Shell>

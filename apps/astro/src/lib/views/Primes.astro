@@ -1,0 +1,17 @@
+---
+import type { PrimeSummary } from "@src/compute";
+
+interface Props {
+  result: PrimeSummary;
+}
+
+const { result } = Astro.props;
+---
+
+<section>
+  <h1>Primes up to {result.n}</h1>
+  <p class="digest">{`primes ${result.n} ${result.count} ${result.sum} ${result.last.join(",")}`}</p>
+  <ul class="tags">
+    {result.last.map((p) => <li>{p}</li>)}
+  </ul>
+</section>

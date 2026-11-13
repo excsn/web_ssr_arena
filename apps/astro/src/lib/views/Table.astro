@@ -1,0 +1,30 @@
+---
+import type { TableRow } from "@src/compute";
+import { price, stockLabel } from "@src/format";
+
+interface Props {
+  rows: TableRow[];
+}
+
+const { rows } = Astro.props;
+---
+
+<section>
+  <h1>Inventory</h1>
+  <p class="digest">{`table ${rows.length} ${rows[rows.length - 1]?.slug ?? "-"}`}</p>
+  <table>
+    <tbody>
+      {
+        rows.map((r) => (
+          <tr class="row">
+            <td>{r.at}</td>
+            <td>{r.name}</td>
+            <td>{price(r.priceCents)}</td>
+            <td>{r.rating.toFixed(1)}</td>
+            <td>{stockLabel(r.stock)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</section>

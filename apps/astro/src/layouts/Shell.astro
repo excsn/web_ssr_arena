@@ -1,0 +1,26 @@
+---
+import "../app.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Outfitters</title>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="bar">
+        <a href="/" class="brand">Outfitters</a>
+        <nav>
+          <a href="/products">Products</a>
+          <a href="/search?q=pack">Search</a>
+          <a href="/counter">Counter</a>
+        </nav>
+      </header>
+      <main class="content"><slot /></main>
+      <footer class="foot">Outfitters, a benchmark storefront.</footer>
+    </div>
+  </body>
+</html>

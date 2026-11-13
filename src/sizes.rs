@@ -210,6 +210,12 @@ impl Tags {
             tags.scripts.push((src, kind == "module"));
           }
         }
+      } else if lower.starts_with("<astro-island") {
+        for name in ["component-url", "renderer-url", "before-hydration-url"] {
+          if let Some(src) = attr(tag, name).filter(|src| !src.is_empty()) {
+            tags.scripts.push((src, true));
+          }
+        }
       }
       rest = &rest[end..];
     }
@@ -338,6 +344,13 @@ mod tests {
     assert_eq!(tags.scripts, vec![("/m.js".to_owned(), true), ("/c.js".to_owned(), false), ("/p.js".to_owned(), false)]);
     assert_eq!(tags.wasm, vec!["/pkg/a.wasm"]);
     assert_eq!(tags.import_map.get("react").map(String::as_str), Some("/v/react.mjs"));
+  }
+
+  #[test]
+  fn an_astro_island_loads_its_component_and_renderer() {
+    let html = r#"<astro-island uid="Z1" component-url="/_astro/Counter.js" component-export="default" renderer-url="/_astro/client.js" props="{}" ssr client="load" before-hydration-url="/_astro/before.js"><div class="counter"></div></astro-island>"#;
+    let tags = Tags::read(html);
+    assert_eq!(tags.scripts, vec![("/_astro/Counter.js".to_owned(), true), ("/_astro/client.js".to_owned(), true), ("/_astro/before.js".to_owned(), true)]);
   }
 
   #[test]

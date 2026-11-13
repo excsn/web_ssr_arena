@@ -1,0 +1,23 @@
+---
+import Shell from "../layouts/Shell.astro";
+import ProductCard from "@src/ui/ProductCard.astro";
+import { PRODUCTS } from "@src/catalog";
+import { summary } from "@src/summary";
+
+const q = (Astro.url.searchParams.get("q") ?? "").trim().toLowerCase();
+const results = q === "" ? [] : PRODUCTS.filter((p) => p.name.toLowerCase().includes(q) || p.tags.includes(q)).map(summary);
+---
+
+<Shell>
+  <section>
+    <h1>Search</h1>
+    <form action="/search" method="get">
+      <input type="search" name="q" value={q} />
+      <button type="submit">Search</button>
+    </form>
+    <p>{results.length} results for &quot;{q}&quot;</p>
+    <ul class="grid">
+      {results.map((p) => <ProductCard product={p} />)}
+    </ul>
+  </section>
+</Shell>

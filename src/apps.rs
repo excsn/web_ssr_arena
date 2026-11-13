@@ -9,6 +9,7 @@ pub enum Kind {
   Next,
   SvelteKit,
   Nuxt,
+  Astro,
   Leptos,
   Dioxus,
 }
@@ -27,6 +28,7 @@ pub const APPS: &[App] = &[
   App { id: "nuxt", name: "Nuxt", kind: Kind::Nuxt, port: 3104 },
   App { id: "leptos", name: "Leptos", kind: Kind::Leptos, port: 3105 },
   App { id: "dioxus", name: "Dioxus", kind: Kind::Dioxus, port: 3106 },
+  App { id: "astro", name: "Astro", kind: Kind::Astro, port: 3107 },
 ];
 
 pub fn by_id(id: &str) -> Option<&'static App> {
@@ -109,6 +111,14 @@ impl App {
         }
         vec![Step { label: "nuxt build", command: nuxt }]
       }
+      Kind::Astro => {
+        let mut astro = Command::new(dir.join("node_modules/.bin/astro"));
+        astro.arg("build").current_dir(&dir).env("ASTRO_TELEMETRY_DISABLED", "1");
+        if cold {
+          astro.env(ARENA_COLD, "1");
+        }
+        vec![Step { label: "astro build", command: astro }]
+      }
       Kind::Leptos => {
         let mut leptos = Command::new("cargo");
         leptos.args(["leptos", "build", "--release"]).current_dir(&dir);
@@ -137,6 +147,7 @@ impl App {
       Kind::Next => vec![dir.join(COLD_NEXT)],
       Kind::SvelteKit => vec![dir.join(".svelte-kit-cold"), dir.join("build-cold"), dir.join(".vite-cold")],
       Kind::Nuxt => vec![dir.join(".nuxt-cold"), dir.join(".output-cold"), dir.join(".vite-cold")],
+      Kind::Astro => vec![dir.join("dist-cold"), dir.join(".astro-cold"), dir.join(".vite-cold")],
       Kind::Leptos => vec![root().join("runs/cold-leptos-target")],
       Kind::Dioxus => vec![root().join("runs/cold-dioxus-target")],
     }
@@ -145,7 +156,7 @@ impl App {
   /// What a build leaves for the server: Next's standalone output needs its static files copied in beside it.
   pub fn finish(&self) -> std::io::Result<()> {
     match self.kind {
-      Kind::Fsr | Kind::SvelteKit | Kind::Nuxt | Kind::Leptos | Kind::Dioxus => Ok(()),
+      Kind::Fsr | Kind::SvelteKit | Kind::Nuxt | Kind::Astro | Kind::Leptos | Kind::Dioxus => Ok(()),
       Kind::Next => {
         let next = self.dir().join(".next");
         let into = next.join("standalone/.next/static");
@@ -171,8 +182,12 @@ impl App {
         node.arg("server.js").current_dir(&standalone).env("NODE_ENV", "production").env("PORT", self.port.to_string()).env("HOSTNAME", "127.0.0.1").env("NEXT_TELEMETRY_DISABLED", "1");
         node
       }
-      Kind::SvelteKit | Kind::Nuxt => {
-        let entry = if self.kind == Kind::SvelteKit { "build" } else { ".output/server/index.mjs" };
+      Kind::SvelteKit | Kind::Nuxt | Kind::Astro => {
+        let entry = match self.kind {
+          Kind::SvelteKit => "build",
+          Kind::Nuxt => ".output/server/index.mjs",
+          _ => "dist/server/entry.mjs",
+        };
         let mut node = Command::new("node");
         node.arg(entry).current_dir(&dir).env("NODE_ENV", "production").env("PORT", self.port.to_string()).env("HOST", "127.0.0.1");
         node
@@ -210,6 +225,7 @@ impl App {
         std::fs::copy(dir.join("package.json"), out.join("package.json")).map(|_| ()).map_err(|e| format!("package.json: {e}"))
       }
       Kind::Nuxt => copy_tree(&dir.join(".output"), &out.join(".output")).map_err(|e| format!(".output/: {e}")),
+      Kind::Astro => copy_tree(&dir.join("dist"), &out.join("dist")).map_err(|e| format!("dist/: {e}")),
       Kind::Leptos => {
         copy_tree(&dir.join("target/site"), &out.join("site")).map_err(|e| format!("target/site: {e}"))?;
         std::fs::copy(dir.join("target/release").join(LEPTOS_BIN), out.join(LEPTOS_BIN)).map(|_| ()).map_err(|e| format!("the binary: {e}"))
@@ -224,7 +240,7 @@ impl App {
       Kind::Fsr => Some(FSR_BIN),
       Kind::Leptos => Some(LEPTOS_BIN),
       Kind::Dioxus => Some("server"),
-      Kind::Next | Kind::SvelteKit | Kind::Nuxt => None,
+      Kind::Next | Kind::SvelteKit | Kind::Nuxt | Kind::Astro => None,
     }
   }
 
@@ -232,7 +248,7 @@ impl App {
   pub fn runtime(&self) -> Option<(String, u64)> {
     match self.kind {
       Kind::Fsr | Kind::Leptos | Kind::Dioxus => None,
-      Kind::Next | Kind::SvelteKit | Kind::Nuxt => {
+      Kind::Next | Kind::SvelteKit | Kind::Nuxt | Kind::Astro => {
         let path = crate::machine::output("which", &["node"])?;
         let version = crate::machine::output("node", &["--version"])?;
         Some((format!("Node {version}"), std::fs::metadata(path).ok()?.len()))
@@ -256,7 +272,7 @@ impl App {
         let lock = std::fs::read_to_string(self.dir().join("Cargo.lock")).unwrap_or_default();
         format!("dioxus {}", locked(&lock, "dioxus").unwrap_or_else(|| "?".to_owned()))
       }
-      Kind::Next | Kind::SvelteKit | Kind::Nuxt => {
+      Kind::Next | Kind::SvelteKit | Kind::Nuxt | Kind::Astro => {
         let read = |package: &str| -> String {
           let version = || -> Option<String> {
             let text = std::fs::read_to_string(self.dir().join("node_modules").join(package).join("package.json")).ok()?;
@@ -268,6 +284,7 @@ impl App {
         let (framework, view) = match self.kind {
           Kind::SvelteKit => ("@sveltejs/kit", "svelte"),
           Kind::Nuxt => ("nuxt", "vue"),
+          Kind::Astro => ("astro", "react"),
           _ => ("next", "react"),
         };
         format!("{}, {}", read(framework), read(view))
@@ -283,6 +300,7 @@ impl App {
       Kind::Next => dir.join("app/products/page.tsx"),
       Kind::SvelteKit => dir.join("src/routes/products/+page.svelte"),
       Kind::Nuxt => dir.join("app/pages/products/index.vue"),
+      Kind::Astro => dir.join("src/pages/products/index.astro"),
       Kind::Leptos => dir.join("src/app.rs"),
       Kind::Dioxus => dir.join("src/main.rs"),
     }
@@ -306,6 +324,7 @@ impl App {
       Kind::Fsr => ("app/src", "app/styles/app.css", "app/src/views", "tsx", "views"),
       Kind::Next => ("src", "app/app.css", "src/views", "tsx", "views"),
       Kind::SvelteKit => ("src/lib", "src/app.css", "src/lib/views", "svelte", "views/svelte"),
+      Kind::Astro => ("src/lib", "src/app.css", "src/lib/views", "astro", "views/astro"),
       _ => ("app/src", "app/assets/app.css", "app/src/views", "vue", "views/vue"),
     };
     let mut copies: Vec<(String, String)> = ["catalog.ts", "format.ts", "compute.ts"].iter().map(|f| pair(f, &format!("{lib}/{f}"))).collect();

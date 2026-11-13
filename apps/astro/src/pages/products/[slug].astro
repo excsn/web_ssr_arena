@@ -1,0 +1,28 @@
+---
+import Shell from "../../layouts/Shell.astro";
+import ProductCard from "@src/ui/ProductCard.astro";
+import { PRODUCTS } from "@src/catalog";
+import { price, stockLabel } from "@src/format";
+import { summary } from "@src/summary";
+
+const product = PRODUCTS.find((p) => p.slug === Astro.params.slug);
+if (!product) return Astro.rewrite("/404");
+const related = PRODUCTS.filter((p) => p.slug !== product.slug && p.tags[0] === product.tags[0]).slice(0, 4).map(summary);
+---
+
+<Shell>
+  <article class="product">
+    <h1>{product.name}</h1>
+    <p class="price">{price(product.priceCents)}</p>
+    <p class="rating">{product.rating.toFixed(1)} / 5</p>
+    <p class="stock">{stockLabel(product.stock)}</p>
+    <p>{product.blurb}</p>
+    <ul class="tags">
+      {product.tags.map((t) => <li>{t}</li>)}
+    </ul>
+    <h2>Related</h2>
+    <ul class="grid">
+      {related.map((p) => <ProductCard product={p} />)}
+    </ul>
+  </article>
+</Shell>

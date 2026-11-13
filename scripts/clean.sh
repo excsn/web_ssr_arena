@@ -46,9 +46,10 @@ remove "$root/apps/fsr/app/.fsr" "$root/apps/fsr/app/dist" "$root/apps/fsr/app/g
 remove "$root/apps/nextjs/.next" "$root/apps/nextjs/.next-cold" "$root/apps/nextjs/next-env.d.ts"
 remove "$root/apps/sveltekit/.svelte-kit" "$root/apps/sveltekit/.svelte-kit-cold" "$root/apps/sveltekit/build" "$root/apps/sveltekit/build-cold" "$root/apps/sveltekit/.vite-cold"
 remove "$root/apps/nuxt/.nuxt" "$root/apps/nuxt/.nuxt-cold" "$root/apps/nuxt/.output" "$root/apps/nuxt/.output-cold" "$root/apps/nuxt/.vite-cold"
+remove "$root/apps/astro/.astro" "$root/apps/astro/.astro-cold" "$root/apps/astro/dist" "$root/apps/astro/dist-cold" "$root/apps/astro/.vite-cold"
 
 if [ "$keep_installs" = false ]; then
-  remove "$root/apps/nextjs/node_modules" "$root/apps/sveltekit/node_modules" "$root/apps/nuxt/node_modules"
+  remove "$root/apps/nextjs/node_modules" "$root/apps/sveltekit/node_modules" "$root/apps/nuxt/node_modules" "$root/apps/astro/node_modules"
   remove "$root/apps/fsr/app/types"
   remove "$root/tools"
 fi

@@ -1,6 +1,6 @@
 # web_ssr_arena
 
-The same online store built in SnapFire FSR, Next.js, SvelteKit, Nuxt, Leptos and Dioxus, then measured on one machine: how long it takes to build, how big it is to deploy, how much a browser downloads per page and how many requests a second it serves.
+The same online store built in SnapFire FSR, Next.js, SvelteKit, Nuxt, Astro, Leptos and Dioxus, then measured on one machine: how long it takes to build, how big it is to deploy, how much a browser downloads per page and how many requests a second it serves.
 
 ## Results
 
@@ -50,6 +50,7 @@ Eleven pages are loaded at 1 to 256 concurrent clients in every app: two built o
 | `apps/nextjs/` | The store in Next.js |
 | `apps/sveltekit/` | The store in SvelteKit |
 | `apps/nuxt/` | The store in Nuxt |
+| `apps/astro/` | The store in Astro |
 | `apps/leptos/` | The store in Leptos |
 | `apps/dioxus/` | The store in Dioxus |
 | `shared/` | The data, styles and page code every app uses |
@@ -65,6 +66,7 @@ Eleven pages are loaded at 1 to 256 concurrent clients in every app: two built o
 (cd apps/nextjs && npm install)
 (cd apps/sveltekit && npm install)
 (cd apps/nuxt && npm install)
+(cd apps/astro && npm install)
 cargo build --release
 ```
 
@@ -105,7 +107,7 @@ export FSR=$PWD/../snapfire/fsr/target/release/fsr
 ./target/release/web_ssr_arena report   # rewrite docs/ from docs/raw/, measure nothing
 ```
 
-The default run is 6 apps × 11 pages × 6 levels × 3 repetitions at 10 s, plus FSR's three native compute pages, plus 3 s of warm-up per page: 1,242 cells in about 218 minutes. `build` and `run` refuse to start outside high power mode unless given `--any-power`. Both record the power mode and load at both ends.
+The default run is 7 apps × 11 pages × 6 levels × 3 repetitions at 10 s, plus FSR's three native compute pages, plus 3 s of warm-up per page: 1,440 cells in about 252 minutes. `build` and `run` refuse to start outside high power mode unless given `--any-power`. Both record the power mode and load at both ends.
 
 ### Running part of it
 

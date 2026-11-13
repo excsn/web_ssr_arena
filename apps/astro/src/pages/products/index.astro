@@ -1,0 +1,23 @@
+---
+import Shell from "../../layouts/Shell.astro";
+import ProductCard from "@src/ui/ProductCard.astro";
+import { PRODUCTS } from "@src/catalog";
+import { summary } from "@src/summary";
+
+const sort = Astro.url.searchParams.get("sort") === "price" ? "price" : "rating";
+const products = PRODUCTS.map(summary);
+if (sort === "price") products.sort((a, b) => a.priceCents - b.priceCents);
+else products.sort((a, b) => b.rating - a.rating);
+---
+
+<Shell>
+  <section>
+    <h1>All products</h1>
+    <p>
+      {products.length} products by {sort}. Sort by <a href="/products?sort=rating">rating</a> or <a href="/products?sort=price">price</a>.
+    </p>
+    <ul class="grid">
+      {products.map((p) => <ProductCard product={p} />)}
+    </ul>
+  </section>
+</Shell>

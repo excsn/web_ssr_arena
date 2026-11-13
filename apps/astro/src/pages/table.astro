@@ -1,0 +1,11 @@
+---
+import Shell from "../layouts/Shell.astro";
+import TableView from "@src/views/Table.astro";
+import { table } from "@src/compute";
+
+const rows = Math.min(Math.max(Number(Astro.url.searchParams.get("rows") ?? "500") || 0, 1), 5000);
+---
+
+<Shell>
+  <TableView rows={table(rows)} />
+</Shell>

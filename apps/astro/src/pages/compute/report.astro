@@ -1,0 +1,11 @@
+---
+import Shell from "../../layouts/Shell.astro";
+import ReportView from "@src/views/Report.astro";
+import { report } from "@src/compute";
+
+const orders = Math.min(Math.max(Number(Astro.url.searchParams.get("orders") ?? "5000") || 0, 1), 200000);
+---
+
+<Shell>
+  <ReportView result={report(orders)} />
+</Shell>

@@ -41,10 +41,11 @@ What the arena measures, on what and under which conditions. The commands that r
 | `nextjs` | Next.js | One Node process |
 | `sveltekit` | SvelteKit | One Node process |
 | `nuxt` | Nuxt | One Node process |
+| `astro` | Astro | One Node process |
 | `leptos` | Leptos | One process on every core |
 | `dioxus` | Dioxus | One process on every core |
 
-Every app is the same storefront: 48 products, the same stylesheet and the same markup. The data and compute code are written once in TypeScript (`shared/catalog.ts`, `shared/compute.ts`) and once in Rust (`shared/catalog.rs`, `shared/compute.rs`, `shared/format.rs`) for Leptos and Dioxus. FSR and Next.js share the TSX views. SvelteKit, Nuxt, Leptos and Dioxus each have the same views written in their own component language under `shared/views/`. `check` fails when an app's copy differs from `shared/`.
+Every app is the same storefront: 48 products, the same stylesheet and the same markup. The data and compute code are written once in TypeScript (`shared/catalog.ts`, `shared/compute.ts`) and once in Rust (`shared/catalog.rs`, `shared/compute.rs`, `shared/format.rs`) for Leptos and Dioxus. FSR and Next.js share the TSX views. SvelteKit, Nuxt, Astro, Leptos and Dioxus each have the same views written in their own component language under `shared/views/`. `check` fails when an app's copy differs from `shared/`.
 
 Each result records the version of the app that produced it: the framework's package version and, for FSR, the snapfire commit with a hash of any uncommitted changes.
 
@@ -99,10 +100,10 @@ Before any load runs against a page, every app's page is fetched and checked for
 | CPU | `run` | The server's CPU over each cell, from `ps` |
 | Memory | `run` | The server's resident set after each cell, its peak from `wait4` when it stops |
 | Startup | `run` | Spawn to first 200 at each server start with the resident set at that point |
-| Cold build | `build` | From empty output directories with dependencies downloaded: a fresh `CARGO_TARGET_DIR` and no rustc wrapper for FSR, Leptos and Dioxus, a fresh `distDir` for Next.js, fresh output, build and Vite cache directories for SvelteKit and Nuxt. FSR's time includes `fsr build app` and its `prerender` step. |
+| Cold build | `build` | From empty output directories with dependencies downloaded: a fresh `CARGO_TARGET_DIR` and no rustc wrapper for FSR, Leptos and Dioxus, a fresh `distDir` for Next.js, fresh output, build and Vite cache directories for SvelteKit, Nuxt and Astro. FSR's time includes `fsr build app` and its `prerender` step. |
 | Warm build | `build` | One page touched, everything else reused |
-| Deploy tree | `size` | For FSR, `fsr bundle` plus the binary and `config/`. For Next.js, `.next/standalone` with `.next/static` copied in. For SvelteKit, `build/` and `package.json`. For Nuxt, `.output/`. For Leptos, its `site/` and the binary. For Dioxus, the `web/` directory `dx` writes. |
-| Runtime | `size` | Node for Next.js, SvelteKit and Nuxt, counted into the total to deploy |
+| Deploy tree | `size` | For FSR, `fsr bundle` plus the binary and `config/`. For Next.js, `.next/standalone` with `.next/static` copied in. For SvelteKit, `build/` and `package.json`. For Nuxt, `.output/`. For Astro, `dist/`. For Leptos, its `site/` and the binary. For Dioxus, the `web/` directory `dx` writes. |
+| Runtime | `size` | Node for Next.js, SvelteKit, Nuxt and Astro, counted into the total to deploy |
 | Bytes per page | `size` | The document, stylesheets, preloaded WebAssembly and scripts, following module imports, raw and gzipped. Modules reached only by a dynamic `import()` are counted apart. |
 
 `build` and `size` run for one app replace only that app's results and keep the others.
