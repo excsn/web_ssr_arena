@@ -6,33 +6,33 @@ The same online store built in SnapFire FSR, Next.js, SvelteKit, Nuxt, Astro, Le
 
 Requests per second at 128 concurrent clients, measured on an Apple M4 Pro (14 cores) in high power mode. Higher is better. Each figure is the median of its runs.
 
-| Page | FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
-| :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Home page | **171,551** | 8,430 | 32,079 | 29,283 | **164,653** | 36,091 |
-| Product list | **58,858** | 851 | 6,167 | 1,929 | 35,044 | 13,049 |
-| Product page | **124,144** | 1,481 | 13,171 | 3,722 | 102,790 | 32,175 |
-| Search | **106,410** | 1,412 | 11,146 | 3,239 | 79,564 | 26,927 |
-| JSON API | **167,587** | 6,717 | 24,814 | 39,999 | **169,373** | **170,573** |
-| 500-row table | **15,698** | 186 | 1,157 | 1,233 | 14,137 | 10,686 |
-| Prime sieve (heavy compute) | 1,872<br>**native 83,666** | 1,047 | 2,754 | 1,815 | 73,737 | 31,923 |
-| Sales report (heavy compute) | 6,541<br>**native 110,928** | 1,487 | 9,787 | 3,589 | 92,004 | 32,953 |
-| Word count (heavy compute) | 1,450<br>**native 5,729** | 452 | 591 | 555 | **5,886** | 5,172 |
+| Page | FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus | Astro |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Home page | **175,608** | 8,430 | 32,079 | 29,283 | 164,653 | 36,091 | 29,675 |
+| Product list | **55,816** | 851 | 6,167 | 1,929 | 35,044 | 13,049 | 8,508 |
+| Product page | **126,334** | 1,481 | 13,171 | 3,722 | 102,790 | 32,175 | 12,113 |
+| Search | **106,906** | 1,412 | 11,146 | 3,239 | 79,564 | 26,927 | 11,534 |
+| JSON API | **167,799** | 6,717 | 24,814 | 39,999 | **169,373** | **170,573** | 15,206 |
+| 500-row table | **14,858** | 186 | 1,157 | 1,233 | **14,137** | 10,686 | 3,903 |
+| Prime sieve (heavy compute) | 1,763<br>**native 83,503** | 1,047 | 2,754 | 1,815 | 73,737 | 31,923 | 2,503 |
+| Sales report (heavy compute) | 6,094<br>**native 109,013** | 1,487 | 9,787 | 3,589 | 92,004 | 32,953 | 10,016 |
+| Word count (heavy compute) | 1,326<br>**native 6,002** | 452 | 591 | 555 | **5,886** | 5,172 | 602 |
 
 Bold marks the best figure in a row and every figure within 5% of it.
 
 On the compute pages FSR is measured twice. The first figure has the loader computing in TypeScript. The one marked native has the loader calling the same Rust that Leptos and Dioxus run, through `#[native]`. The view and the render are FSR's both times. Both figures are ranked.
 
-| Measure | FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus |
-| :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Cold build | 46.7 s | 2.8 s | **1.5 s** | 3.4 s | 48.5 s | 56.9 s |
-| Rebuild after one change | **0.7 s** | 1.4 s | 1.3 s | 2.6 s | 14.0 s | 13.2 s |
-| Total to deploy, runtime included | 28.2 MiB | 151.8 MiB | 108.8 MiB | 109.7 MiB | 13.3 MiB | **8.6 MiB** |
-| JavaScript per page, gzipped | 40.0 KiB | 135.0 KiB | 33.7 KiB | 69.3 KiB | **6.7 KiB** | 15.8 KiB |
-| WebAssembly per page, gzipped | - | - | - | - | **257.1 KiB** | 483.2 KiB |
-| Memory at start | 19.5 MB | 95.0 MB | 60.4 MB | 80.1 MB | **5.7 MB** | 10.2 MB |
-| Start to first response | **16 ms** | 322 ms | 54 ms | 212 ms | 30 ms | 24 ms |
+| Measure | FSR | Next.js | SvelteKit | Nuxt | Leptos | Dioxus | Astro |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Cold build | 46.1 s | 2.8 s | 1.5 s | 3.4 s | 48.5 s | 56.9 s | **0.8 s** |
+| Rebuild after one change | **0.4 s** | 1.4 s | 1.3 s | 2.6 s | 14.0 s | 13.2 s | 0.5 s |
+| Total to deploy, runtime included | 27.7 MiB | 151.8 MiB | 108.8 MiB | 109.7 MiB | 13.3 MiB | **8.6 MiB** | 109.9 MiB |
+| JavaScript per page, gzipped | 40.2 KiB | 135.0 KiB | 33.7 KiB | 69.3 KiB | **6.7 KiB** | 15.8 KiB | 67.6 KiB |
+| WebAssembly per page, gzipped | - | - | - | - | **257.1 KiB** | 483.2 KiB | - |
+| Memory at start | 18.1 MB | 95.0 MB | 60.4 MB | 80.1 MB | **5.7 MB** | 10.2 MB | 78.0 MB |
+| Start to first response | **14 ms** | 322 ms | 54 ms | 212 ms | 30 ms | 24 ms | 71 ms |
 
-The total to deploy is the deploy tree plus the runtime installed beside it: Node, 107.3 MiB, for Next.js, SvelteKit and Nuxt. Bytes per page are for the counter page.
+The total to deploy is the deploy tree plus the runtime installed beside it: Node, 107.3 MiB, for Next.js, SvelteKit, Nuxt and Astro. Bytes per page are for the counter page.
 
 Every number, every concurrency level and the method are in [docs/README.md](docs/README.md).
 

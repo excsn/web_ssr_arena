@@ -4,126 +4,126 @@
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-09T16:15:01Z",
-        "load": 29.16,
+        "at": "2026-11-14T09:52:28Z",
+        "load": 20.35,
         "power_mode": "high power"
       },
       "kind": "cold",
       "rep": 0,
-      "secs": 46.704423542,
+      "secs": 46.122854584,
       "start": {
-        "at": "2026-11-09T16:13:45Z",
-        "load": 3.97,
+        "at": "2026-11-14T09:51:41Z",
+        "load": 16.45,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.100109167,
+          "secs": 0.181993542,
           "step": "fsr build app"
         },
         {
-          "secs": 46.53030525,
+          "secs": 45.881026959,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.074009125,
+          "secs": 0.059834083,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.25.1"
+      "version": "snapfire_fsr_host 0.26.0"
     },
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-09T16:15:01Z",
-        "load": 29.16,
+        "at": "2026-11-14T09:52:28Z",
+        "load": 20.35,
         "power_mode": "high power"
       },
       "kind": "warm",
       "rep": 1,
-      "secs": 26.118970417,
+      "secs": 0.384815041,
       "start": {
-        "at": "2026-11-09T16:13:45Z",
-        "load": 3.97,
+        "at": "2026-11-14T09:51:41Z",
+        "load": 16.45,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.226190083,
+          "secs": 0.190088791,
           "step": "fsr build app"
         },
         {
-          "secs": 25.8271145,
+          "secs": 0.135645458,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.065665834,
+          "secs": 0.059080792,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.25.1"
+      "version": "snapfire_fsr_host 0.26.0"
     },
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-09T16:15:01Z",
-        "load": 29.16,
+        "at": "2026-11-14T09:52:28Z",
+        "load": 20.35,
         "power_mode": "high power"
       },
       "kind": "warm",
       "rep": 2,
-      "secs": 0.742935833,
+      "secs": 0.373588834,
       "start": {
-        "at": "2026-11-09T16:13:45Z",
-        "load": 3.97,
+        "at": "2026-11-14T09:51:41Z",
+        "load": 16.45,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.224875333,
+          "secs": 0.182600917,
           "step": "fsr build app"
         },
         {
-          "secs": 0.453703,
+          "secs": 0.132177083,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.0643575,
+          "secs": 0.058810834,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.25.1"
+      "version": "snapfire_fsr_host 0.26.0"
     },
     {
       "app": "fsr",
       "end": {
-        "at": "2026-11-09T16:15:01Z",
-        "load": 29.16,
+        "at": "2026-11-14T09:52:28Z",
+        "load": 20.35,
         "power_mode": "high power"
       },
       "kind": "warm",
       "rep": 3,
-      "secs": 0.301862332,
+      "secs": 0.371826083,
       "start": {
-        "at": "2026-11-09T16:13:45Z",
-        "load": 3.97,
+        "at": "2026-11-14T09:51:41Z",
+        "load": 16.45,
         "power_mode": "high power"
       },
       "steps": [
         {
-          "secs": 0.091713333,
+          "secs": 0.179617708,
           "step": "fsr build app"
         },
         {
-          "secs": 0.145856083,
+          "secs": 0.132666083,
           "step": "cargo build --release"
         },
         {
-          "secs": 0.064292916,
+          "secs": 0.059542292,
           "step": "prerender"
         }
       ],
-      "version": "snapfire_fsr_host 0.25.1"
+      "version": "snapfire_fsr_host 0.26.0"
     },
     {
       "app": "nextjs",
@@ -584,6 +584,98 @@
         }
       ],
       "version": "dioxus 0.7.10"
+    },
+    {
+      "app": "astro",
+      "end": {
+        "at": "2026-11-13T22:52:29Z",
+        "load": 2.91,
+        "power_mode": "high power"
+      },
+      "kind": "cold",
+      "rep": 0,
+      "secs": 0.799112416,
+      "start": {
+        "at": "2026-11-13T22:52:27Z",
+        "load": 2.91,
+        "power_mode": "high power"
+      },
+      "steps": [
+        {
+          "secs": 0.799112416,
+          "step": "astro build"
+        }
+      ],
+      "version": "astro 7.4.12, react 19.3.1"
+    },
+    {
+      "app": "astro",
+      "end": {
+        "at": "2026-11-13T22:52:29Z",
+        "load": 2.91,
+        "power_mode": "high power"
+      },
+      "kind": "warm",
+      "rep": 1,
+      "secs": 0.524062417,
+      "start": {
+        "at": "2026-11-13T22:52:27Z",
+        "load": 2.91,
+        "power_mode": "high power"
+      },
+      "steps": [
+        {
+          "secs": 0.524062417,
+          "step": "astro build"
+        }
+      ],
+      "version": "astro 7.4.12, react 19.3.1"
+    },
+    {
+      "app": "astro",
+      "end": {
+        "at": "2026-11-13T22:52:29Z",
+        "load": 2.91,
+        "power_mode": "high power"
+      },
+      "kind": "warm",
+      "rep": 2,
+      "secs": 0.549430958,
+      "start": {
+        "at": "2026-11-13T22:52:27Z",
+        "load": 2.91,
+        "power_mode": "high power"
+      },
+      "steps": [
+        {
+          "secs": 0.549430958,
+          "step": "astro build"
+        }
+      ],
+      "version": "astro 7.4.12, react 19.3.1"
+    },
+    {
+      "app": "astro",
+      "end": {
+        "at": "2026-11-13T22:52:29Z",
+        "load": 2.91,
+        "power_mode": "high power"
+      },
+      "kind": "warm",
+      "rep": 3,
+      "secs": 0.538237375,
+      "start": {
+        "at": "2026-11-13T22:52:27Z",
+        "load": 2.91,
+        "power_mode": "high power"
+      },
+      "steps": [
+        {
+          "secs": 0.538237375,
+          "step": "astro build"
+        }
+      ],
+      "version": "astro 7.4.12, react 19.3.1"
     }
   ]
 }
